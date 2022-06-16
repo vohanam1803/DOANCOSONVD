@@ -1,0 +1,13 @@
+﻿@model IEnumerable<AMNHAC.Models.link>
+
+@foreach (var item in Model)
+{
+
+<audio id="Song" controls>
+    <source src="@item.timkiem" type="audio/mp4" />
+</audio>
+}
+
+
+
+

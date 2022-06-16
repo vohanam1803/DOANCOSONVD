@@ -1,0 +1,23 @@
+let music;
+        $(document).ready(function () {
+            load();
+        });
+        function load() {
+            $.ajax({
+                url: '/Discover/listVD',
+                type: 'GET',
+                success: function (data) {
+                    @*$.each(data.get, function (k, v) {
+                        getdata.id = v.id;
+                        getdata.title = v.title;
+                        getdata.singer = v.author;
+                        getdata.file = v.NguonVideo;
+                        getdata.image = "https://img.youtube.com/vi/v.HinhNguonVideo/maxresdefault.jpg";
+                    })*@
+                    music = data;
+                    console.log(music);
+                }
+            });
+
+        }
+

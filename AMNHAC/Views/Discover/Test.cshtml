@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form action="/Discover/CreateTest" method="post">
+    <div style="color:black">
+        <input type="file" name="fileUpload" id="fileUpload" style="color:white;display:none;" accept="video/*" />
+        <input type="button" id="btnUpload" value="Chọn" class="btn btn-success" />
+        <input type="text" id="hinh" name="hinh" value="" />
+    </div>
+    <button type="submit" style="color:black;">Save</button>
+</form>
+<h2>Test</h2>
+
+@section upload
+        {
+    <script>
+        $(function () {
+            $('#btnUpload').click(function () {
+                $('#fileUpload').trigger('click');
+            });
+        });
+        $('#fileUpload').change(function () {
+            if (window.FormData !== undefined) {
+                var fileUpload = $('#fileUpload').get(0);
+                var files = fileUpload.files;
+                var formData = new FormData();
+                formData.append('file', files[0]);
+
+                $.ajax(
+                    {
+                        type: 'POST',
+                        url: '/Discover/ProcessUpload',
+                        contentType: false,
+                        processData: false,
+                        data: formData,
+                        success: function (urlImage) {
+
+
+                            $('#hinh').attr('value', urlImage);
+                        },
+                        error: function (err) {
+                            alert('Error ', err.statusText);
+                        }
+                    });
+            }
+        });
+    </script>
+}

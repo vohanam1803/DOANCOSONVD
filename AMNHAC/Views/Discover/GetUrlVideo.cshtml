@@ -1,0 +1,106 @@
+﻿@using AMNHAC.Models
+@model dynamic
+@{
+    ViewBag.Title = "GetUrlVideo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetUrlVideo</h2>
+<h3 class="title" style="text-align:center;color:red;"> @ViewBag.Message </h3>
+<div class="test">
+    @foreach (Video item in Model.video)
+    {
+
+        <div class="song" onclick="openList(event)" data-id="@item.id" data-set="@item.NguonVideo">
+
+            <div class="thumb" style="background-image: url('https://img.youtube.com/vi/@item.HinhNguonVideo/maxresdefault.jpg') "></div>
+            <div class="body">
+                @*<iframe width="560" height="315" src="https://www.youtube.com/embed/@item.HinhNguonVideo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>*@
+                <h3 class="title"> @item.title </h3>
+                <p class="author"> @item.author </p> / <p class="author"> @item.duration </p>
+            </div>
+
+            <div class="option">
+                <form action="/Discover/Play" method="post">
+                </form>
+            </div>
+        </div>
+
+        <div class="modal js-modal" id="@item.id" onclick="closeAllList(event)" data-set="@item.NguonVideo">
+            <div class="modal-container js-modal-container">
+                <div class="modal-close js-modal-close" onclick="closeList(event)" data-id="@item.id" data-set="@item.NguonVideo">
+                    <i class="fa fa-times"></i>
+                </div>
+
+                <header class="modal-header">
+                    <div class="Lyrics-form ">
+                        <i class="modal-heading-icon fa fa-info"></i>
+                        <h1 class="Lyrics-title">@item.title</h1>
+                    </div>
+
+                </header>
+
+                <div class="modal-body">
+                    <div class="Lyrics">
+                        <p class="Lyrics-info">
+
+
+                            <audio class="btn js-buy-ticket s-full-width" id="@item.NguonVideo" src="@item.NguonVideo" style="width:100%" autoplay loop controls>
+                                <source  type="audio/mp4" />
+                            </audio>
+
+                            <button value="" style="color:black;width:100px;height:40px;">Next</button>
+
+                        </p>
+
+                    </div>
+                </div>
+
+                <footer class="modal-footer">
+                    <p class="modal-help text-black">Need <a href="">help?</a></p>
+                </footer>
+            </div>
+        </div>
+    }
+</div>
+<script>
+
+    function openList(e) {
+        var id = e.currentTarget.getAttribute('data-id')
+        var dataset = e.currentTarget.getAttribute('data-set')
+        console.log(dataset);
+        var getdataset = document.getElementById(dataset)
+        getdataset.play();
+        showBuyTickets(id)
+
+
+    }
+    function closeList(e) {
+        var id = e.currentTarget.getAttribute('data-id')
+        var dataset = e.currentTarget.getAttribute('data-set')
+        var getdataset = document.getElementById(dataset)
+        getdataset.pause();
+        hideBuyTickets(id)
+
+    }
+    function closeAllList(e) {
+        var id = e.currentTarget.getAttribute('id')
+        var dataset = e.currentTarget.getAttribute('data-set')
+        var getdataset = document.getElementById(dataset)
+        getdataset.pause();
+        hideBuyTickets(id)
+    }
+
+
+
+
+    function showBuyTickets(id) {
+        const modal = document.getElementById(id)
+        modal.classList.add('open')
+
+    }
+    function hideBuyTickets(id) {
+        const modal = document.getElementById(id)
+        modal.classList.remove('open')
+    }
+</script>
