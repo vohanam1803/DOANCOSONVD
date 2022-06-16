@@ -4,7 +4,8 @@
     ViewBag.Title = "TrangChu";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@using Microsoft.AspNet.Identity
+<p class="alert alert-danger">@ViewBag.Check  @User.Identity.GetUserName()!!</p>
 <h2 style="color:orangered;text-align:center;">Home Trang Chủ</h2>
 <form action="/Home/CreateAdmin" method="post">
     <span class="icon"><i class="fa fa-search"></i></span>

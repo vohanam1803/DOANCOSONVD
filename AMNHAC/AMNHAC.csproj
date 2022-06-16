@@ -425,8 +425,10 @@
     <Content Include="Content\css\content.css" />
     <Content Include="Content\css\footer.css" />
     <Content Include="Content\css\header.css" />
+    <Content Include="Content\css\MyMusic.css" />
     <Content Include="Content\css\ticket.css" />
     <Content Include="Content\css\trangchu.css" />
+    <Content Include="Content\images\maxresdefault.jpg" />
     <Content Include="Content\music\1933377945.mp3" />
     <Content Include="Content\music\3136278587.mp3" />
     <Content Include="Content\music\314486061.mp3" />
@@ -513,10 +515,12 @@
     <Content Include="Views\Home\CreateTacGia.cshtml" />
     <Content Include="Views\Discover\Test.cshtml" />
     <Content Include="Views\Discover\GetUrlVideo.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Account.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\images\" />
     <Folder Include="Views\Playlist\" />
   </ItemGroup>
   <ItemGroup>

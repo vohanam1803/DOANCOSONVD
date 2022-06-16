@@ -127,8 +127,47 @@
         </div>
 
     </div>
-    
 
+
+}
+
+@foreach (Video item in Model.video)
+{
+    <div class="music-taskbar">
+
+        <div class="body-music">
+            <div class="music-img">
+                <img src="https://img.youtube.com/vi/@item.HinhNguonVideo/maxresdefault.jpg" alt="">
+            </div>
+            <iframe id="@item.id" width="560" height="315" src="https://www.youtube.com/embed/@item.HinhNguonVideo?controls=0" style="display:none;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class=" music-title">
+                <h3 class="title"> @item.title</h3>
+                <p class="author"> @item.author </p>
+            </div>
+
+        </div>
+
+        <div class="controls">
+
+            <ion-icon name="shuffle-outline" class="play-shuffle md hydrated" role="img" aria-label="shuffle outline">
+            </ion-icon>
+
+            <ion-icon name="play-back" class="play-back md hydrated" role="img" aria-label="play back"></ion-icon>
+
+            <div class="play">
+                <div class="player-inner">
+                    <ion-icon name="play" class="play-icon" id="icon"></ion-icon>
+                </div>
+            </div>
+
+            <ion-icon name="play-forward" class="play-forward md hydrated" role="img" aria-label="play forward">
+            </ion-icon>
+
+            <ion-icon name="repeat-outline" class="play-repeat md hydrated" role="img" aria-label="repeat outline">
+            </ion-icon>
+
+        </div>
+    </div>
 }
 
 

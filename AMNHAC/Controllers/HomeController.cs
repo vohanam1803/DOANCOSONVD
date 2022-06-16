@@ -708,29 +708,46 @@ namespace AMNHAC.Controllers
         /// </summary>
         /// <returns></returns>
         /// 
-        [Authorize(Users = "xincaiten2001@gmail.com")]
+        
+        [Authorize]
         public ActionResult TrangAdmin()
         {
 
-            return View();
+            if (checkUserorAdmin() == false)
+            {
+                ViewBag.Message = "Bạn Không Có Quyền Hạn Này cho tài khoản";
+                return View("~/Views/MyMusicProfile/Post.cshtml");
+            }
+            else
+            {
+                ViewBag.Message = "Xin Chào Admin";
+                return View("~/Views/Home/TrangAdmin.cshtml");
+            }
         }
 
-        [Authorize(Users = "xincaiten2001@gmail.com")]
+        [Authorize]
         public ActionResult TrangChu()
         {
-
-            ViewBag.Message = "You Can Search AnyThing Add Your Playlist And Controll Trang Chủ!!";
-            /*var trangchu = from ss in data.Videos where ss.loaivideo != "user" select ss;*/
-            dynamic mymodel = new ExpandoObject();
-            mymodel.person = GetPerson();
-            mymodel.personTQ = from ss in data.Persons where ss.idTheloai == 1 select ss;
-            mymodel.personVN = from ss in data.Persons where ss.idTheloai == 2 select ss;
-            mymodel.trangchu = from ss in data.Videos where ss.loaivideo != "user" select ss;
-            mymodel.videoTQ = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 1 select ss;
-            mymodel.videoVN = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 2 select ss;
-            return View(mymodel);
-            /*return View(trangchu);*/
-
+            if (checkUserorAdmin() == false)
+            {
+                ViewBag.Message = "Bạn Không Có Quyền Hạn Này cho tài khoản";
+                return View("~/Views/MyMusicProfile/Post.cshtml");
+            }
+            else
+            {
+                ViewBag.Check ="Xin Chào Admin";
+                ViewBag.Message = "You Can Search AnyThing Add Your Playlist And Controll Trang Chủ!!";
+                /*var trangchu = from ss in data.Videos where ss.loaivideo != "user" select ss;*/
+                dynamic mymodel = new ExpandoObject();
+                mymodel.person = GetPerson();
+                mymodel.personTQ = from ss in data.Persons where ss.idTheloai == 1 select ss;
+                mymodel.personVN = from ss in data.Persons where ss.idTheloai == 2 select ss;
+                mymodel.trangchu = from ss in data.Videos where ss.loaivideo != "user" select ss;
+                mymodel.videoTQ = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 1 select ss;
+                mymodel.videoVN = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 2 select ss;
+                return View(mymodel);
+                /*return View(trangchu);*/
+            }
         }
 
 
@@ -993,17 +1010,25 @@ namespace AMNHAC.Controllers
 
         }
 
-        [Authorize(Users = "xincaiten2001@gmail.com")]
+        [Authorize]
         [HttpGet]
         public ActionResult TacGia()
         {
-            dynamic mymodel = new ExpandoObject();
-            mymodel.personTQ = from ss in data.Persons where ss.idTheloai == 1 select ss;
-            mymodel.personVN = from ss in data.Persons where ss.idTheloai == 2 select ss;
-            mymodel.videoTQ = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 1 select ss;
+            if (checkUserorAdmin() == false)
+            {
+                ViewBag.Message = "Bạn Không Có Quyền Hạn Này cho tài khoản";
+                return View("~/Views/MyMusicProfile/Post.cshtml");
+            }
+            {
+                dynamic mymodel = new ExpandoObject();
+                mymodel.personTQ = from ss in data.Persons where ss.idTheloai == 1 select ss;
+                mymodel.personVN = from ss in data.Persons where ss.idTheloai == 2 select ss;
+                mymodel.videoTQ = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 1 select ss;
 
-            mymodel.videoVN = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 2 select ss;
-            return View(mymodel);
+                mymodel.videoVN = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 2 select ss;
+                return View(mymodel);
+            }
+            
 
         }
 
@@ -1011,8 +1036,15 @@ namespace AMNHAC.Controllers
         [HttpGet]
         public ActionResult CreateTacGia()
         {
-
-            return View();
+            if (checkUserorAdmin() == false)
+            {
+                ViewBag.Message = "Bạn Không Có Quyền Hạn Này cho tài khoản";
+                return View("~/Views/MyMusicProfile/Post.cshtml");
+            }
+            else
+            {
+                return View();
+            }
         }
         [HttpPost]
         public ActionResult CreateTacGia(FormCollection fr,Person s)
