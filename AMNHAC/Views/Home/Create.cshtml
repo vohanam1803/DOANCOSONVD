@@ -26,7 +26,7 @@
                     @if (Request.IsAuthenticated)
                     {
                         <form action="/Home/AddPlaylist" method="post">
-                            <input type="text" id="domain" name="Id" value="@item.title" style="display:none;" />
+                            <input type="text" id="domain" name="Id" value="@item.HinhNguonVideo" style="display:none;" />
                             <input type="text" id="domainCheckId" name="CheckId" value="@item.id/user/@User.Identity.GetUserName()" style="display:none;" />
                             <input type="text" id="GetUserName" name="GetUserName" value="@User.Identity.GetUserName()" style="display:none;" />
 

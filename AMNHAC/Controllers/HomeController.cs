@@ -114,11 +114,97 @@ namespace AMNHAC.Controllers
 
     }
 
+    public class SearchYouTube2
+    {
 
+
+        public int ID { get; set; }
+
+        public async Task<List<Models.Video>> RunYouTube(string timkiem)
+        {
+            List<Models.Video> vk = new List<Models.Video>();
+
+            var youtubeService = new YouTubeService(new BaseClientService.Initializer()
+            {
+                ApiKey = "AIzaSyBHCjF4D7gZXz7vjh6XMKJpfNLmSGgZvV8",
+                ApplicationName = this.GetType().ToString()
+
+            });
+
+            var searchListRequest = youtubeService.Search.List("snippet");
+            searchListRequest.Q = timkiem; // Replace with your search term.
+            searchListRequest.MaxResults = 1;
+
+
+            // Call the search.list method to retrieve results matching the specified query term.
+            var searchListResponse = await searchListRequest.ExecuteAsync();
+
+
+            List<string> videos = new List<string>();
+            List<string> channels = new List<string>();
+            List<string> playlists = new List<string>();
+
+
+
+            // Add each result to the appropriate list, and then display the lists of
+            // matching videos, channels, and playlists.
+
+
+            foreach (var searchResult in searchListResponse.Items)
+            {
+                switch (searchResult.Id.Kind)
+                {
+                    case "youtube#video":
+                        var VideoListRequest = youtubeService.Videos.List("snippet, contentDetails, statistics");
+                        VideoListRequest.Id = searchResult.Id.VideoId;
+                        var VideoListResponse = await VideoListRequest.ExecuteAsync();
+
+
+                        videos.Add(String.Format("{0} ({1})", searchResult.Snippet.Title, searchResult.Id.VideoId));
+                        var vs = new Models.Video();
+                        {
+                            vs.title = searchResult.Snippet.Title;
+                            vs.id = searchResult.Id.VideoId;
+                            vs.HinhNguonVideo = searchResult.Id.VideoId;
+                            vs.link = searchResult.Snippet.Description;
+                            vs.author = searchResult.Snippet.ChannelTitle;
+                            foreach (var video in VideoListResponse.Items)
+                            {
+                                vs.duration = video.ContentDetails.Duration;
+
+                            }
+                        }
+
+                        vk.Add(vs);
+
+                        break;
+
+                    case "youtube#channel":
+                        channels.Add(String.Format("{0} ({1})", searchResult.Snippet.Title, searchResult.Id.ChannelId));
+                        break;
+
+                    case "youtube#playlist":
+                        playlists.Add(String.Format("{0} ({1})", searchResult.Snippet.Title, searchResult.Id.PlaylistId));
+                        break;
+                }
+            }
+
+
+            Console.WriteLine(String.Format("Videos:\n{0}\n", string.Join("\n", videos)));
+            Console.WriteLine(String.Format("Channels:\n{0}\n", string.Join("\n", channels)));
+            Console.WriteLine(String.Format("Playlists:\n{0}\n", string.Join("\n", playlists)));
+
+            return vk;
+        }
+        /////////////////
+
+
+    }
     public class HomeController : Controller
     {
         DataClasses1DataContext data = new DataClasses1DataContext();
         SearchYouTube searchObject = new SearchYouTube();
+        SearchYouTube2 searchObject2 = new SearchYouTube2();
         List<Models.Video> test = new List<Models.Video>();
 
 
@@ -376,7 +462,7 @@ namespace AMNHAC.Controllers
 
 
 
-                var getUserdata = data.AspNetUsers.ToList();
+                /*var getUserdata = data.AspNetUsers.ToList();
                 for (var item = 0; item < getUserdata.Count; item++)
                 {
                     if (getUserdata[item].Id == userId)
@@ -384,7 +470,7 @@ namespace AMNHAC.Controllers
                         getUserdata[item].UserName = facebook.name;
                         getUserdata[item].Name = facebook.picture.data.url;
                     }
-                }
+                }*/
 
                 ///
 
@@ -461,7 +547,7 @@ namespace AMNHAC.Controllers
 
 
 
-                var getUserdata = data.AspNetUsers.ToList();
+                /*var getUserdata = data.AspNetUsers.ToList();
                 for (var item = 0; item < getUserdata.Count; item++)
                 {
                     if (getUserdata[item].Id == userId)
@@ -469,7 +555,7 @@ namespace AMNHAC.Controllers
                         getUserdata[item].UserName = facebook.name;
                         getUserdata[item].Name = facebook.picture.data.url;
                     }
-                }
+                }*/
 
                 ///
 
@@ -511,7 +597,8 @@ namespace AMNHAC.Controllers
             vk.id = form["CheckId"];
             var checkId = data.Videos.Where(m => m.id == vk.id).FirstOrDefault();
 
-            test = await searchObject.RunYouTube(vk.title);
+            test = await searchObject2.RunYouTube(vk.title);
+            
             vs = new List<Models.Video>(test);
 
 
@@ -579,7 +666,7 @@ namespace AMNHAC.Controllers
 
                         var userId = User.Identity.GetUserId();
 
-                        var getUserdata = data.AspNetUsers.ToList();
+                        /*var getUserdata = data.AspNetUsers.ToList();
                         for (var items = 0; items < getUserdata.Count; items++)
                         {
                             if (getUserdata[items].Id == userId)
@@ -587,7 +674,7 @@ namespace AMNHAC.Controllers
                                 getUserdata[items].UserName = facebook.name;
                                 getUserdata[items].Name = facebook.picture.data.url;
                             }
-                        }
+                        }*/
 
                         ///
 
@@ -651,7 +738,7 @@ namespace AMNHAC.Controllers
 
                 var userId = User.Identity.GetUserId();
 
-                var getUserdata = data.AspNetUsers.ToList();
+                /*var getUserdata = data.AspNetUsers.ToList();
                 for (var item = 0; item < getUserdata.Count; item++)
                 {
                     if (getUserdata[item].Id == userId)
@@ -659,7 +746,7 @@ namespace AMNHAC.Controllers
                         getUserdata[item].UserName = facebook.name;
                         getUserdata[item].Name = facebook.picture.data.url;
                     }
-                }
+                }*/
 
                 ///
 
@@ -769,7 +856,7 @@ namespace AMNHAC.Controllers
             var checkId = data.Videos.Where(m => m.id == vk.id).FirstOrDefault();
 
             //Youtube API
-            test = await searchObject.RunYouTube(vk.title);
+            test = await searchObject2.RunYouTube(vk.title);
             vs = new List<Models.Video>(test);
 
             //Check thể loại video
@@ -844,7 +931,7 @@ namespace AMNHAC.Controllers
             data.SubmitChanges();
             //Sổ danh sách 
 
-            var all_list = data.Videos.ToList();
+            var all_list = (from ss in data.Videos where ss.loaivideo != "user" select ss).ToList();
 
             /*var all_sach = from ss in data.Videos where ss.loaivideo != "user" select ss;*/
 

@@ -86,16 +86,18 @@ h1 {
 }
 
 
-.play-repeat.is-repeat{
-    color : blue;
+.play-repeat.is-repeat {
+    color: blue;
 }
+
 .play-shuffle.is-shuffle {
     color: blue;
 }
 
-.song.is-songclick{
+.song.is-songclick {
     background-color: black;
 }
+
 .music-thumb {
     width: 100px;
     height: 100px;
@@ -163,7 +165,6 @@ h1 {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     font-size: 20px;
     position: relative;
-    z-index: 2;
 }
 
 .play-repeat,
@@ -265,10 +266,84 @@ h1 {
         font-size: 18px;
     }
 
+.control-main .time-range {
+    display: flex;
+    align-items: center;
+}
+
+.music-taskbar-right {
+    display: flex;
+    align-items: center;
+}
 
 
+/*transform: translateX(-231px);
+transition: transform 5.775s linear 0s;*/
+.menu-left .status_header {
+    position: fixed;
+}
+.status_header {
+    display: flex;
+  
+}
+
+.status-main {
+    border: 2px solid;
+    border-radius: 5px;
+    box-shadow: 5px 5px #888888;
+}
 
 
+    .status_header .status_avatar img {
+        width: 50px;
+        border-radius: 50%;
+        height: 50px;
+    }
 
+.newsfeed {
+    display: flex;
+}
 
+.status_header {
+    display: flex;
+    align-items: center;
+}
 
+    .status_header .status_avatar img, .comment-box img {
+        width: 50px;
+        border-radius: 50%;
+        height: 50px;
+    }
+
+.caption {
+    max-width: 500px;
+}
+
+.status {
+    margin: auto;
+}
+
+.status_img img, .status_img video {
+    width: 500px;
+    max-height: 500px;
+}
+
+.emo-taskbar {
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+}
+
+.comment-box {
+    display: flex;
+    align-items: center;
+}
+
+.comment-text {
+    flex: 1;
+}
+
+    .comment-text input {
+        width: 100%;
+        max-width:90%;
+    }

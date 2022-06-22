@@ -32,14 +32,9 @@ namespace AMNHAC.Controllers
             }
         }
 
-        public ActionResult Test()
-        {
-
-            var check = from ss in data.Persons select ss;
+        
 
 
-            return View(check);
-        }
         [HttpPost]
         public string ProcessUpload(HttpPostedFileBase file)
         {
@@ -53,11 +48,18 @@ namespace AMNHAC.Controllers
         [Authorize]
         public ActionResult IndexDiscover()
         {
-            var getget = get();
+            
+            dynamic mymodel = new ExpandoObject();
+            var userId = User.Identity.GetUserId();
+            var user = from ss in data.AspNetUsers where ss.Id == userId select ss;
+            var baiviet = from ss in data.BaiViets select ss;
+            mymodel.user = user;
+            mymodel.baiviet = baiviet;
+            /*var getget = get();*/
 
-           /* var all_playlist = data.Videos.ToList();*/
+            /* var all_playlist = data.Videos.ToList();*/
 
-            return View(getget);
+            return View(/*getget*/mymodel);
         }
         //Cập nhật lại playlist tren trang cá nhân
         public List<Models.Video> get()
@@ -98,26 +100,45 @@ namespace AMNHAC.Controllers
             return View(video);
         }
 
+        [Authorize]
+        public ActionResult Test()
+        {
 
-
+            return View();
+        }
         [HttpPost]
         public ActionResult CreateTest(FormCollection fr)
         {
+            var userId = User.Identity.GetUserId();
+
+            var gettitle = fr["title"];
+            var getmota = fr["mota"];
+            var getvideo = fr["hinh"];
+            var getchedo = fr["chedo"];
 
 
-
-            var gethinh = fr["hinh"];
-
-
-
-            var check = new link();
-            check.idtimkiem = gethinh;
-            check.timkiem = gethinh;
-
-            data.links.InsertOnSubmit(check);
+            var check = new BaiViet();
+            check.title = gettitle;
+            check.Mota = getmota;
+            check.video = getvideo;
+            check.chedo = getchedo;
+            check.UserId = userId;
+            check.newday = DateTime.Now;
+            if(check.Mota == "")
+            {
+                ViewBag.Message = "Mô Tả Is Not Null!!";
+                return View("~/Views/Discover/Test.cshtml");
+            }
+            if(check.chedo == "")
+            {
+                ViewBag.Message = "Check Your Chế Độ!!";
+                return View("~/Views/Discover/Test.cshtml");
+            }
+            data.BaiViets.InsertOnSubmit(check);
             data.SubmitChanges();
-            var get = data.links.ToList();
-            return View("~/Views/Discover/VideoPlay.cshtml", get);
+            var get = data.BaiViets.ToList();
+            ViewBag.Message = "Đăng Thành Công!!";
+            return View("~/Views/Discover/Test.cshtml");
         }
 
 
@@ -207,5 +228,7 @@ namespace AMNHAC.Controllers
             string get = video.Uri;
             return get;
         }
+
+
     }
 }

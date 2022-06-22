@@ -3,7 +3,70 @@
     ViewBag.Title = "Test";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h3 style="text-align:center;color:red;"> @ViewBag.Message </h3>
+
 <form action="/Discover/CreateTest" method="post">
+    <div style="color:black;">
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt style="color:white">
+                Tiêu Đề
+            </dt>
+
+            <dd>
+                <input type="text" id="test" name="title"/>
+            </dd>
+
+            <dt style="color:white">
+                Mô Tả
+            </dt>
+
+            <dd>
+                @*<input type="text" id="test2" name="mota" />*@
+                <textarea type="text" id="test2" name="mota" style="width:200px; height: 200px"></textarea>
+            </dd>
+            
+            
+
+            <dt style="color:white">
+                Video
+            </dt>
+
+            <dd>
+                <div style="color:black">
+                    <input type="file" name="fileUpload" id="fileUpload" style="color:white;display:none;" accept="video/*" />
+                    <input type="button" id="btnUpload" value="Chọn" class="btn btn-success" />
+                    <input type="text" id="hinh" name="hinh" value="" />
+                </div>
+            </dd>
+            
+
+            <dt style="color:white">
+                Chế Độ
+            </dt>
+
+            <dd>
+                <select name="chedo" class="form-control">
+                    <option value="">--Chọn Chế Độ--</option>
+                    <option value="CK">Công Khai</option>
+                    <option value="CN">Cá Nhân</option>
+                </select>
+            </dd>
+        </dl>
+    </div>
+
+
+    <button type="submit" style="color:black;">Save</button>
+</form>
+
+
+
+
+
+
+@*<form action="/Discover/CreateTest" method="post">
     <div style="color:black">
         <input type="file" name="fileUpload" id="fileUpload" style="color:white;display:none;" accept="video/*" />
         <input type="button" id="btnUpload" value="Chọn" class="btn btn-success" />
@@ -11,7 +74,7 @@
     </div>
     <button type="submit" style="color:black;">Save</button>
 </form>
-<h2>Test</h2>
+<h2>Test</h2>*@
 
 @section upload
         {

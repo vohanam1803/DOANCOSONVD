@@ -61,7 +61,7 @@
                             @using Microsoft.AspNet.Identity
                             @if (Request.IsAuthenticated)
                             {
-                                <input type="text" id="domain" name="Id" value="@video.title" style="display:none;" />
+                                <input type="text" id="domain" name="Id" value="@video.HinhNguonVideo" style="display:none;" />
                                 <input type="text" id="domainCheckId" name="CheckId" value="@video.HinhNguonVideo/user/@User.Identity.GetUserName()" style="display:none;" />
                                 <input type="text" id="GetUserName" name="GetUserName" value="@User.Identity.GetUserName()" style="display:none;" />
                                 <button type="submit" style="color:black;">Add Your Playlist</button>
@@ -146,7 +146,7 @@
                             @using Microsoft.AspNet.Identity
                             @if (Request.IsAuthenticated)
                             {
-                                <input type="text" id="domain" name="Id" value="@video.title" style="display:none;" />
+                                <input type="text" id="domain" name="Id" value="@video.HinhNguonVideo" style="display:none;" />
                                 <input type="text" id="domainCheckId" name="CheckId" value="@video.HinhNguonVideo/user/@User.Identity.GetUserName()" style="display:none;" />
                                 <input type="text" id="GetUserName" name="GetUserName" value="@User.Identity.GetUserName()" style="display:none;" />
                                 <button type="submit" style="color:black;">Add Your Playlist</button>

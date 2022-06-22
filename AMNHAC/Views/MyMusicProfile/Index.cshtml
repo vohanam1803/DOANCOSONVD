@@ -14,16 +14,20 @@
     {
         <div class="profile">
             <div class="picture">
-                <img src="@user.Name" alt="">
+                <img src="@user.Avatar" alt="">
             </div>
             <div class="info">
                 @using Microsoft.AspNet.Identity
-                <h1 class="name mt-8">@user.UserName</h1>
+                <h1 class="name mt-8">@user.Name</h1>
                 <div class="member_type">
                     <i class="fa fa-users mt-8"> Free member </i>
                     <div class="private_profile">
                         <i class="fa fa-eye-slash mt-8"> Private Profile</i>
-                        <a href="#" class="change_profile mt-8">Change</a>
+                        <form action="/MyMusicProfile/ThayAvatar" method="post">
+                            <button type="submit" style="background-color:red;color:black;" class="change_profile mt-8">
+                                Change Avatar
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -46,107 +50,40 @@
 </div>
 
 
-<h3 class="title" style="text-align:center;color:red;"> @ViewBag.Message </h3>
+<h3 style="text-align:center;color:red;"> @ViewBag.Message </h3>
 
-<div class="controls" style="color:red">
 
-    <ion-icon name="shuffle-outline" class="play-shuffle"></ion-icon>
+<div class="playlist">
 
-    <ion-icon name="play-back" class="play-back"></ion-icon>
+    @*Render*@
 
-    <ion-icon name="play-forward" class="play-forward"></ion-icon>
-
-    <ion-icon name="repeat-outline" class="play-repeat"></ion-icon>
 
 </div>
-@foreach (Video item in Model.video)
-{
-
-    <div class="song" set-id="@item.title" onclick="openList(event)" data-id="@item.id">
-        <div class="thumb" style="background-image: url('https://img.youtube.com/vi/@item.HinhNguonVideo/maxresdefault.jpg') "></div>
 
 
 
-        <div class="body">
 
-            <iframe id="@item.id" width="560" height="315" src="https://www.youtube.com/embed/@item.HinhNguonVideo?controls=0" style="display:none;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <h3 class="title"> @item.title</h3>
-            <p class="author"> @item.author </p>
 
+
+
+
+
+
+
+<div class="music-taskbar none">
+
+    <div class="body-music">
+        <div class="music-img">
+            <img src="" alt="">
         </div>
-
-        @*<audio id="Song" controls>
-                <source src="@item.NguonVideo" type="audio/mp4" />
-            </audio>*@
-        @*<button onclick="openList(event)" data-id="@item.id">Play</button>*@
-        @*<button onclick="closeList(event)" data-id="@item.id">Stop</button>*@
-        <div class="modal js-modal" onclick="closeAllList(event)" id="@item.id">
-            <div class="modal-container js-modal-container">
-                <div class="modal-close js-modal-close" onclick="closeList(event)" data-id="@item.id">
-                    <i class="fa fa-times"></i>
-                </div>
-
-                <header class="modal-header">
-                    <div class="Lyrics-form ">
-                        <i class="modal-heading-icon fa fa-info"></i>
-                        <h1 class="Lyrics-title">@item.title</h1>
-                    </div>
-
-                </header>
-
-                <div class="modal-body">
-                    <div class="Lyrics">
-                        <p class="Lyrics-info">
-
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/@item.HinhNguonVideo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                            ____________________
-                        </p>
-
-                    </div>
-                </div>
-
-                <footer class="modal-footer">
-                    <p class="modal-help text-black">Need <a href="">help?</a></p>
-                </footer>
-            </div>
-        </div>
-        <div class="play" style="color:black;">
-            <div class="player-inner" id="@item.title">
-                <ion-icon name="play" class="play-icon" id="icon"></ion-icon>
-            </div>
-        </div>
-
-
-        <div class="song">
-            <form action="/Home/DetelePlaylist" method="post">
-                <input type="text" id="domain" name="Id" value="@item.id" style="display:none;" />
-
-                <button type="submit">Detele From Playlist</button>
-            </form>
+        <div class="music-title">
+            <marquee class="title"></marquee>
+            <p class="author"></p>
         </div>
 
     </div>
 
-
-}
-
-@foreach (Video item in Model.video)
-{
-    <div class="music-taskbar">
-
-        <div class="body-music">
-            <div class="music-img">
-                <img src="https://img.youtube.com/vi/@item.HinhNguonVideo/maxresdefault.jpg" alt="">
-            </div>
-            <iframe id="@item.id" width="560" height="315" src="https://www.youtube.com/embed/@item.HinhNguonVideo?controls=0" style="display:none;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <div class=" music-title">
-                <h3 class="title"> @item.title</h3>
-                <p class="author"> @item.author </p>
-            </div>
-
-        </div>
-
+    <div class="control-main">
         <div class="controls">
 
             <ion-icon name="shuffle-outline" class="play-shuffle md hydrated" role="img" aria-label="shuffle outline">
@@ -167,8 +104,28 @@
             </ion-icon>
 
         </div>
+        <div class="time-range" style="display: flex;">
+            <div class="remaining"></div>
+            <div class="widthrange" style="width: 100%; margin: 24px 16px 0;">
+                <input type="range" name="range" id="range" class="range" />
+            </div>
+            <div class="duration"></div>
+        </div>
+
+
+        <audio id="Song" src="">
+        </audio>
     </div>
-}
+    <div class="music-taskbar-right" style=" margin-right: 32px;">
+        <i class="fa fa-volume-up" aria-hidden="true"></i>
+        <div class="widthrange" style="width: 100%;">
+            <input type="range" class="range" style="margin: 0; margin-left: 16px; max-width: 100%;" />
+        </div>
+    </div>
+
+
+</div>
+
 
 
 <style>
@@ -194,81 +151,299 @@
         background-color: #ff0002;
     }
 </style>
-<script>
-    let playY;
-    let isPlaying = 0, isCheck = 0;
-    let check;
-
-    let layicon;
-    var luuicon;
-
-    var durationTime = document.querySelector(".duration");
-    var remainingTime = document.querySelector(".remaining");
 
 
-    function openList(e) {
-        var PlayBtn = e.currentTarget.getAttribute('data-id')
-        var Player = document.getElementById(PlayBtn);
+@section scripts
+{
+    <script type="text/javascript">
 
-        var geticon = e.currentTarget.getAttribute('set-id')
-        var icon = document.getElementById(geticon);
 
-        if (isPlaying == 0) {
+        var mySong = document.getElementById("Song");
+        var icon = document.querySelector(".player-inner");
+        var next = document.querySelector(".play-forward");
+        var back = document.querySelector(".play-back");
 
-            playY = Player.src += '&rel=0&autoplay=1'
-            Player.src = playY;
-            isPlaying = 1;
-            check = Player;
-            luuicon = icon;
-            icon.innerHTML = `<ion-icon name="pause-circle"></ion-icon>`;
+        var durationTime = document.querySelector(".duration");
+        var remainingTime = document.querySelector(".remaining");
+
+        var rangeBar = document.querySelector(".range");
+        var nameMusic = document.querySelector(".music-title .title");
+        var author = document.querySelector(".music-title .author")
+        var imageMusic = document.querySelector(".music-img img");
+        var spinnerImage = document.querySelector(".music-img");
+        var musicTask = document.querySelector(".music-taskbar");
+
+
+        var ran = document.querySelector(".play-shuffle");
+        var agian = document.querySelector(".play-repeat");
+        
+
+
+        let music;
+        $(document).ready(function () {
+            load();
+        });
+        function load() {
+            $.ajax({
+                url: '/Discover/listVD',
+                type: 'GET',
+                success: function (data) {
+                    if (data.length == 0) {
+                        alert('Chưa Có Gì Trong Playlist!!')
+                    }
+                    else {
+                        alert('Your Playlist!!')
+                        music = data;
+                        console.log(music);
+                    }
+
+
+                }
+            });
 
         }
-        else {
 
-            var PlayerClose = check;
 
-            if (PlayerClose == Player) {
-                icon.innerHTML = `<ion-icon name="play"></ion-icon>`;
-                playY = PlayerClose.src.replace('&rel=0&autoplay=1', '');
-                PlayerClose.src = playY;
-                isPlaying = 0;
+        setTimeout(function () {
+            let Random = false;
+
+            let isPlaying = true;
+            let indexSong = 0;
+            let repeat = false;
+            mySong.setAttribute("src", `${music[indexSong].file}`);
+
+            init(indexSong);
+
+            //Time bài hát
+            function displayTimer() {
+                var { duration, currentTime } = mySong;
+                rangeBar.max = duration;
+                rangeBar.value = currentTime;
+                remainingTime.textContent = time(currentTime);
+                if (!duration) {
+                    durationTime.textContent = "00:00";
+                }
+                else {
+                    durationTime.textContent = time(duration);
+                }
             }
-            else {
-                luuicon.innerHTML = `<ion-icon name="play"></ion-icon>`;
-                playY = PlayerClose.src.replace('&rel=0&autoplay=1', '');
-                PlayerClose.src = playY;
-                isPlaying = 0;
-                ///////////////
-                playY = Player.src += '&rel=0&autoplay=1'
-                Player.src = playY;
-                isPlaying = 1;
-                check = Player;
-                icon.innerHTML = `<ion-icon name="pause-circle"></ion-icon>`;
-                luuicon = icon;
+            function time(number) {
+                var phut = Math.floor(number / 60);
+                var giay = Math.floor(number - phut * 60);
+                return `${phut < 10 ? '0' + phut : phut}:${giay < 10 ? '0' + giay : giay}`;
             }
+            displayTimer();
+            let timer = setInterval(displayTimer, 1000);
+
+
+            //Map html playlist
+            const htmls = music.map((song, indexSong) => {
+                return `
+
+                                        <div class="song" data-index="${indexSong}" onclick="openList(event)">
+                                            <div class="thumb" style="background-image: url('https://img.youtube.com/vi/${song.image}/maxresdefault.jpg') "></div>
+                                            <div class="body">
+                                                <h3 class="title"> ${song.title} </h3>
+                                                <p class="author"> ${song.author} </p>
+                                            </div>
+                                            <form action="/Home/DetelePlaylist" method="post">
+                                                <input type="text" id="domain" name="Id" value="${song.Id}" style="display:none;" />
+
+                                                <button type="submit">
+                                                    <span class="icon"><i class="fa-solid fa-calendar-circle-minus"></i></span>
+                                                </button>
+                                            </form>
+                                        </div>
+
+
+                                `}
+            )
+            const playlist = document.querySelector(".playlist");
+            playlist.innerHTML = htmls.join('')
+            playlist.addEventListener("click", scrollClick);
+            function scrollClick(e) {
+                const songNode = e.target.closest('.song');
+                console.log(songNode);
+                if (songNode || e.target.closest('.option')) {
+
+                    indexSong = Number(songNode.getAttribute('data-index'))
+                    init(indexSong)
+                    quay.play()  // dùng animation quay hinh
+                    mySong.play();
+                    icon.innerHTML = `<ion-icon name="pause-circle"></ion-icon>`;
+                    isPlaying = false;
+                    timer = setInterval(displayTimer, 500);
+
+                }
+            }
+            ///
+            next.addEventListener("click", function () {
+                changeSong(1);
+            });
+            back.addEventListener("click", function () {
+                changeSong(-1);
+            });
+            function changeSong(dir) {
+                if (dir === 1) {
+                    indexSong++;
+                    if (indexSong >= music.length) {
+                        indexSong = 0;
+                    }
+                    isPlaying = true;
+                } else if (dir === -1) {
+                    indexSong--;
+
+                    if (indexSong < 0) {
+                        indexSong = music.length - 1;
+                    }
+                    isPlaying = true;
+                }
+                init(indexSong);
+
+                playPause();
+            }
+
+            //Quay hinh
+            const quay = spinnerImage.animate([
+                { transform: 'rotate(360deg)' }
+            ], {
+                duration: 10000,
+                iterations: Infinity
+            })
+            quay.pause()
+            icon.addEventListener("click", playPause);
+            function playPause() {
+                if (isPlaying) {
+                    quay.play()  // dùng animation quay hinh
+                    mySong.play();
+                    isPlaying = false;
+                    icon.innerHTML = `<ion-icon name="pause-circle"></ion-icon>`;
+                    timer = setInterval(displayTimer, 1000);
+                }
+                else {
+                    quay.pause()  // dùng animation quay hinh
+                    mySong.pause();
+                    isPlaying = true;
+                    icon.innerHTML = `<ion-icon name="play"></ion-icon>`;
+                    clearInterval(timer);
+                }
+            }
+
+            rangeBar.addEventListener("change", changeBar);
+            function changeBar() {
+                mySong.currentTime = rangeBar.value;
+            }
+
+            ////init
+            function init(indexSong) {
+                console.log(music[indexSong]);
+
+                mySong.setAttribute("src", `${music[indexSong].file}`);
+                imageMusic.setAttribute("src", `https://img.youtube.com/vi/${music[indexSong].image}/maxresdefault.jpg `);
+                @* nameMusic.textContent = music[indexSong].title;*@
+                nameMusic.innerHTML = `<marquee>${music[indexSong].title}</marquee>`;
+                author.textContent = music[indexSong].author;
+
+
+            }
+            agian.addEventListener("click", function () {
+                if (repeat == true) {
+                    repeat = false;
+                    agian.classList.remove("is-repeat");// dùng animation
+
+                }
+                else {
+
+                    repeat = true;
+                    agian.classList.add("is-repeat");  // dùng animation
+                    ran.classList.remove("is-shuffle");// dùng animation
+                    Random = false;
+                }
+            });
+            ran.addEventListener("click", function () {
+                if (Random == true) {
+                    Random = false;
+                    ran.classList.remove("is-shuffle");// dùng animation
+
+                }
+                else {
+
+                    Random = true;
+                    ran.classList.add("is-shuffle");  // dùng animation
+                    agian.classList.remove("is-repeat");// dùng animation
+                    repeat = false;
+                }
+            });
+            //Sinh ngẫu nhiên
+            function ranindex() {
+                return Math.floor(Math.random() * music.length);
+            }
+            let indexSongBefore;
+            //Chuyển bài khi kết thúc song
+            mySong.addEventListener("ended", endsong)
+            function endsong() {
+                if (repeat == true) {
+                    isPlaying = true;
+                    playPause();
+                }
+                else {
+                    if (Random == true) {
+                        @*do {
+                            indexSongBefore = indexSong;
+                            ranindex();
+                        } while (ranindex() === indexSongBefore)*@
+                        init(ranindex());
+                        indexSong = ranindex()
+                        isPlaying = true;
+                        playPause();
+                    }
+                    else {
+                        changeSong(1);
+                    }
+                }
+            }
+        }, 1000)
+
+        
+
+        function openList(e) {
+            var id = e.currentTarget.getAttribute('data-index')
+
+            musicTask.classList.remove('none')
+
         }
+    </script>
 
-    }
+    @*    <script>
+            const buyBtns = document.querySelectorAll('.js-buy-ticket')
+            const modal = document.querySelector('.js-modal')
+            const modalContainer = document.querySelector('.js-modal-container')
+            const modalClose = document.querySelector('.modal-close')
 
-   @* function closeList(e) {
-        var stopBtn = e.currentTarget.getAttribute('data-id')
+            function showBuyTickets() {
+                modal.classList.add('open')
+            }
 
-        var PlayerClose = document.getElementById(stopBtn);
-        console.log(PlayerClose)
+            function hideBuyTickets() {
+                modal.classList.remove('open')
+            }
 
-        playY = PlayerClose.src.replace('&rel=0&autoplay=1', '');
-        console.log(playY)
+            for (const buyBtn of buyBtns) {
+                buyBtn.addEventListener('click', showBuyTickets)
+            }
 
-        PlayerClose.src = playY;
-        console.log(PlayerClose.src)
-
-        isPlaying = 0;
-        console.log(isPlaying)
-
-
-    }*@
+            modalClose.addEventListener('click', hideBuyTickets)
+            modal.addEventListener('click', hideBuyTickets)
+            modalContainer.addEventListener('click', function (event) {
+                event.stopPropagation()
+            })
 
 
-    ///
 
-</script>
+        </script>*@
+
+}
+
+
+
+
