@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @using Microsoft.AspNet.Identity
-<form action="/Home/Post" method="post">
+<form action="/Home/Post" method="post" class="mt-32">
     <button type="submit" style="background-color:red;color:black;">Vô Quyền Admin</button>
 </form>
 <link href="~/Content/css/content.css" rel="stylesheet" />
@@ -40,8 +40,8 @@
 </div>
 <div class="taskbar mg-16 pd-12">
     <ul class="task">
-        <li class="task_logo"><a href="/MyMusicProfile/Index"><i class="fa fa-list"></i><br>Playlist</a></li>
-        <li class="task_logo"><a href="#"><i class="fa fa-pencil"></i><br>Edit</a></li>
+        <li onclick="change(event)" id="1" class="task_logo"><a href="/MyMusicProfile/Index"><i class="fa fa-list"></i><br>Playlist</a></li>
+        <li onclick="change(event)" id="2" class="task_logo"><a href="#"><i class="fa fa-pencil"></i><br>Edit</a></li>
         <li class="task_logo"><a href="#"><i class="fa fa-upload"></i><br>Upload</a></li>
         <li class="task_logo"><a href="#"><i class="fa fa-certificate"></i><br>Badges</a></li>
         <li class="task_logo"><a href="#"><i class="fa fa-book"></i><br>History</a></li>
@@ -52,16 +52,78 @@
 
 <h3 style="text-align:center;color:red;"> @ViewBag.Message </h3>
 
-
 <div class="playlist">
-
     @*Render*@
-
-
 </div>
 
+<div class="status none">
+    @foreach (BaiViet item in Model.baiviet)
+    {
+        <div class="status-main mt-16">
+            <div class="status_header">
+                <div class="status_avatar pd-8">
+                    <img src="@item.AspNetUser.Avatar" alt="">
+                </div>
+                <div class="status_hMid pd-8">
+                    <div class="status_name">@item.AspNetUser.Name</div>
+                    <div class="status_time">
+                        @item.newday
+
+                        @if (item.chedo == "CK")
+                        {
+                            <i class="fa fa-globe" aria-hidden="true">Công Khai</i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-globe" aria-hidden="true">Cá Nhân</i>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="caption">
+                @item.title
+            </div>
+            <div class="caption">
+                @item.Mota
+            </div>
+            @if (item.video == "")
+            {
+
+            }
+            else
+            {
+                <div class="status_img text-center mt-8">
+                    <video controls>
+                        <source src="@item.video">
+                    </video>
+                </div>
+            }
+
+            <div class="emo-taskbar mg-16">
+                <div class="like">
+                    <i class="fa fa-thumbs-o-up" aria-hidden="true">Thích</i>
+                </div>
+                <div class="comment">
+                    <i class="fa fa-comments" aria-hidden="true">Bình luận</i>
+                </div>
+            </div>
+            <div class="comment-box">
+                @foreach (AspNetUser user in Model.user)
+                {
+                    <div class="status_avatar pd-8">
+                        <img src="@user.Avatar" alt="">
+                    </div>
+                }
 
 
+                <div class="comment-text">
+                    <input class="pd-12" type="text" placeholder="Đóng góp ý kiến của bạn...">
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
 
 
 
@@ -152,6 +214,19 @@
     }
 </style>
 
+<script>
+
+    function change(e) {
+        var playlist = document.querySelector(".playlist");
+        var status = document.querySelector(".status");
+        var e = e.currentTarget.getAttribute("id");
+        if (e == "2") {
+            playlist.classList.add("none");
+            status.classList.remove("none");
+        }
+    }
+</script>
+
 
 @section scripts
 {
@@ -176,7 +251,7 @@
 
         var ran = document.querySelector(".play-shuffle");
         var agian = document.querySelector(".play-repeat");
-        
+
 
 
         let music;
@@ -404,7 +479,7 @@
             }
         }, 1000)
 
-        
+
 
         function openList(e) {
             var id = e.currentTarget.getAttribute('data-index')
@@ -445,5 +520,17 @@
 }
 
 
-
+<style>
+    #content button {
+        color: black;
+        /* background-image: -webkit-linear-gradient(top,#fff 0,#e0e0e0 100%); */
+        background-image: -o-linear-gradient(top,#fff 0,#e0e0e0 100%);
+        /* background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#e0e0e0)); */
+        background-image: linear-gradient(to bottom,#fff 0,#e0e0e0 100%);
+        background-repeat: repeat-x;
+        border-color: #dbdbdb;
+        text-shadow: 0 1px 0 #fff;
+        border-color: #ccc;
+    }
+</style>
 

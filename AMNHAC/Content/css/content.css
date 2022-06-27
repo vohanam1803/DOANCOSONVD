@@ -45,7 +45,7 @@
     }
 
     #content .task_logo a {
-        color: #fff;
+        color: #000;
     }
 
     #content .task_logo:hover {
@@ -77,7 +77,6 @@
         height: 500px;
         width: 500px;
     }
-
 .none{
     display:none;
 }

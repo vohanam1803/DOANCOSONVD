@@ -425,7 +425,7 @@
     <Content Include="Content\css\content.css" />
     <Content Include="Content\css\footer.css" />
     <Content Include="Content\css\header.css" />
-    <Content Include="Content\css\MyMusic.css" />
+    <Content Include="Content\css\mymusic.css" />
     <Content Include="Content\css\ticket.css" />
     <Content Include="Content\css\trangchu.css" />
     <Content Include="Content\images\maxresdefault.jpg" />

@@ -17,7 +17,7 @@ namespace AMNHAC.Controllers
     [Authorize]
     public class MyMusicProfileController : Controller
     {
-        
+
         DataClasses1DataContext data = new DataClasses1DataContext();
 
         private ApplicationUserManager _userManager;
@@ -68,9 +68,9 @@ namespace AMNHAC.Controllers
             data.SubmitChanges();
             return RedirectToAction("Test");
         }*/
-       
-        
-        
+
+
+
 
         public async Task<ActionResult> Index()
         {
@@ -82,12 +82,13 @@ namespace AMNHAC.Controllers
             {
                 var userId = User.Identity.GetUserId();
                 var checkuser = from ss in data.AspNetUsers where ss.Id == userId select ss;
-
+                var baiviet = from ss in data.BaiViets where ss.UserId == userId select ss;
                 var videoProfile = data.Videos.FirstOrDefault(m => m.UserId == userId);
                 var check = /*from ss in data.Videos where ss.loaivideo == "user" && ss.UserId == userId select ss*/getget;
                 dynamic mymodel = new ExpandoObject();
                 mymodel.user = checkuser;
                 mymodel.video = check;
+                mymodel.baiviet = baiviet;
                 if (videoProfile == null)
                 {
                     ViewBag.Message = "You Not Have Anything In Playlist";
@@ -127,16 +128,18 @@ namespace AMNHAC.Controllers
                     }
                 }
                 data.SubmitChanges();*/
-                
+
                 ///
 
-                var checkuser = from ss in data.AspNetUsers where ss.Id == userId  select ss; 
 
+                var checkuser = from ss in data.AspNetUsers where ss.Id == userId select ss;
+                var baiviet = from ss in data.BaiViets where ss.UserId == userId select ss;
                 var videoProfile = data.Videos.FirstOrDefault(m => m.UserId == userId);
                 var check = /*from ss in data.Videos where ss.loaivideo == "user" && ss.UserId == userId select ss*/getget;
                 dynamic mymodel = new ExpandoObject();
                 mymodel.user = checkuser;
                 mymodel.video = check;
+                mymodel.baiviet = baiviet;
                 if (videoProfile == null)
                 {
                     ViewBag.Message = "You Not Have Anything In Playlist";
@@ -147,9 +150,9 @@ namespace AMNHAC.Controllers
                     ViewBag.Message = "Your Playlist";
                     return View(mymodel);
                 }
-                
+
             }
-            
+
         }
         public bool checkUserorAdmin()
         {
@@ -170,7 +173,7 @@ namespace AMNHAC.Controllers
         [HttpPost]
         public ActionResult Post()
         {
-            if(checkUserorAdmin() == false)
+            if (checkUserorAdmin() == false)
             {
                 ViewBag.Message = "Bạn Không Có Quyền Hạn Này cho tài khoản";
                 return View();
@@ -180,7 +183,7 @@ namespace AMNHAC.Controllers
                 ViewBag.Message = "Xin Chào Admin";
                 return View("~/Views/Home/TrangAdmin.cshtml");
             }
-            
+
         }
         [Authorize]
         [HttpPost]
@@ -190,7 +193,7 @@ namespace AMNHAC.Controllers
             var checkuser = from ss in data.AspNetUsers where ss.Id == userId select ss;
             return View(checkuser);
         }
-        
+
         [HttpPost]
         public async Task<ActionResult> EditAvatar(FormCollection form)
         {
@@ -199,7 +202,7 @@ namespace AMNHAC.Controllers
             var userId = User.Identity.GetUserId();
             var checkuser1 = (from ss in data.AspNetUsers where ss.Id == userId select ss).ToList();
             var getget = get();
-            for (var item = 0;item<checkuser1.Count;item++)
+            for (var item = 0; item < checkuser1.Count; item++)
             {
                 checkuser1[item].Avatar = avatar;
                 checkuser1[item].Name = name;
@@ -212,7 +215,7 @@ namespace AMNHAC.Controllers
 
             if (accesstoken == null)
             {
-                
+
                 var checkuser = from ss in data.AspNetUsers where ss.Id == userId select ss;
 
                 var videoProfile = data.Videos.FirstOrDefault(m => m.UserId == userId);
@@ -228,7 +231,7 @@ namespace AMNHAC.Controllers
                 else
                 {
                     ViewBag.Message = "Your Playlist";
-                    return View("~/Views/MyMusicProfile/Index.cshtml",mymodel);
+                    return View("~/Views/MyMusicProfile/Index.cshtml", mymodel);
                 }
                  /*(new HttpStatusCodeResult(HttpStatusCode.NotFound, "Token not found"))*/;
             }
@@ -247,7 +250,7 @@ namespace AMNHAC.Controllers
                 Models.Facebook facebook = new Models.Facebook(jsonObj);
                 ViewBag.JSON = result;
 
-               
+
 
                 /*var getUserdata = data.AspNetUsers.ToList();
                 for(var item = 0;item<getUserdata.Count;item++)
@@ -302,5 +305,12 @@ namespace AMNHAC.Controllers
             string get = video.Uri;
             return get;
         }
+
+        /*     public ActionResult GetNews()
+             {
+                 var userId = User.Identity.GetUserId();
+
+                 return View(news);
+             }*/
     }
 }
