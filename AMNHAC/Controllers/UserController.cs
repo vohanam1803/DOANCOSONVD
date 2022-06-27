@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using AMNHAC.Models;
 using Microsoft.AspNet.Identity;
+
+using System.Web.Helpers;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace AMNHAC.Controllers
 {
@@ -80,8 +85,58 @@ namespace AMNHAC.Controllers
 
 
         }
+        [HttpPost]
+        public ActionResult EditUser(FormCollection form)
+        {
+            var id = form["Id"];
+            var pw = form["name"];
+            var username = form["mota"];
 
+            var pwhash = Hash.getpass(pw);
+            var userlist = data.AspNetUsers.ToList();
+            for (var item = 0; item < userlist.Count; item++)
+            {
+                if (userlist[item].Id == id)
+                {
+                    userlist[item].PasswordHash = pwhash;
+
+                    userlist[item].Name = username;
+
+                }
+            }
+            data.SubmitChanges();
+            return RedirectToAction("Account");
+        }
+        //--------------------băm password.cs-------------------
+        public class Hash
+        {
+            public static string getpass(string password)
+            {
+                using(MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+                {
+                    byte[] b = System.Text.Encoding.UTF8.GetBytes(password);
+                    b = md5.ComputeHash(b);
+                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                    foreach (byte x in b)
+                        sb.Append(x.ToString("x2"));
+                    return sb.ToString();
+                }
+            }
+        }
+        public class customHash : IPasswordHasher
+        {
+            public string HashPassword(string password)
+            {
+                return Hash.getpass(password);
+            }
+
+            public PasswordVerificationResult VerifyHashedPassword(string hashedPassword, string providedPassword)
+            {
+                if (hashedPassword == HashPassword(providedPassword))
+                    return PasswordVerificationResult.Success;
+                else
+                    return PasswordVerificationResult.Failed;
+            }
+        }
     }
-
-
 }

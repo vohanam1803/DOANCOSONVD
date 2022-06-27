@@ -19,7 +19,7 @@
                 <div class="status_hMid pd-8">
                     <div class="status_name">
                         <nav id="nav" active="">
-                            <a href="/MyMusicProfile/Index" style="margin: 12px;" title="Trang Cá Nhân">@user.Name</a>
+                            <a href="/MyMusicProfile/Index" style="margin: 12px; color:black" title="Trang Cá Nhân">@user.Name</a>
                         </nav>
                     </div>
                 </div>
@@ -30,14 +30,14 @@
             <div class="status_hMid pd-8">
                 <nav id="nav" active="">
 
-                    <a href="/MyMusicProfile/Index" style="margin: 12px;" title="Trang Cá Nhân"> My music profile</a>
+                    <a href="/MyMusicProfile/Index" style="margin: 12px; color: black" title="Trang Cá Nhân"> My music profile</a>
                 </nav>
             </div>
         </div>
-        <div class="status_header" style="margin-top:10%;">
+        <div class="status_header" style="margin-top:10%; color: black">
             <div class="status_hMid pd-8">
                 <nav id="nav" active="">
-                    <a href="/Discover/Test" class="fa fa-upload" title="Up bài của bạn">Upload song</a>
+                    <a href="/Discover/Test" style="color:black;" class="fa fa-upload" title="Up bài của bạn">Upload song</a>
 
                 </nav>
             </div>
@@ -52,7 +52,7 @@
 
 
 
-                        <input type="search" name="Id" id="search" placeholder="Search Any Post.." title="Tìm kiếm" style="color:#000" />
+                        <input type="search" name="Id" id="search" placeholder="Search Any Title Post.." title="Tìm kiếm" style="color:#000" />
 
                     </form>
 
@@ -107,7 +107,7 @@
                 <div class="caption">
                     @item.Mota
                 </div>
-                @if (item.image == "")
+                @if (item.image == "" || item.image == null)
                 {
 
                 }
@@ -117,7 +117,7 @@
                         <img src="@item.image" alt="">
                     </div>
                 }
-                @if (item.video == "")
+                @if (item.video == "" || item.video == null)
                 {
 
                 }

@@ -436,6 +436,8 @@ namespace AMNHAC.Controllers
                 dynamic mymodel = new ExpandoObject();
                 mymodel.user = checkuser;
                 mymodel.video = check;
+               
+                mymodel.baiviet = from ss in data.BaiViets where ss.UserId == userId select ss;
                 if (videoProfile == null)
                 {
                     ViewBag.Message = "You Not Have Anything In Playlist";
@@ -484,6 +486,8 @@ namespace AMNHAC.Controllers
                 dynamic mymodel = new ExpandoObject();
                 mymodel.user = checkuser;
                 mymodel.video = check;
+                
+                mymodel.baiviet = from ss in data.BaiViets where ss.UserId == userId select ss;
                 if (videoProfile == null)
                 {
                     ViewBag.Message = "You Not Have Anything In Playlist";
@@ -521,6 +525,8 @@ namespace AMNHAC.Controllers
                 dynamic mymodel = new ExpandoObject();
                 mymodel.user = checkuser;
                 mymodel.video = check;
+               
+                mymodel.baiviet = from ss in data.BaiViets where ss.UserId == userId select ss;
                 if (videoProfile == null)
                 {
                     ViewBag.Message = "You Not Have Anything In Playlist";
@@ -569,6 +575,8 @@ namespace AMNHAC.Controllers
                 dynamic mymodel = new ExpandoObject();
                 mymodel.user = checkuser;
                 mymodel.video = check;
+
+                mymodel.baiviet = from ss in data.BaiViets where ss.UserId == userId select ss;
                 if (videoProfile == null)
                 {
                     ViewBag.Message = "You Not Have Anything In Playlist";
@@ -647,7 +655,8 @@ namespace AMNHAC.Controllers
                         dynamic mymodel = new ExpandoObject();
                         mymodel.user = checkuser;
                         mymodel.video = check;
-
+                       
+                        mymodel.baiviet = from ss in data.BaiViets where ss.UserId == userId select ss;
                         ViewBag.Message = "This Have In Your Playlist";
                         return View("~/Views/MyMusicProfile/Index.cshtml", mymodel);
 
@@ -688,7 +697,8 @@ namespace AMNHAC.Controllers
                         dynamic mymodel = new ExpandoObject();
                         mymodel.user = checkuser;
                         mymodel.video = check;
-
+                        
+                        mymodel.baiviet = from ss in data.BaiViets where ss.UserId == userId select ss;
                         ViewBag.Message = "This Have In Your Playlist!!";
                         return View("~/Views/MyMusicProfile/Index.cshtml", mymodel);
 
@@ -712,6 +722,8 @@ namespace AMNHAC.Controllers
                 dynamic mymodel = new ExpandoObject();
                 mymodel.user = checkuser;
                 mymodel.video = check;
+               
+                mymodel.baiviet = from ss in data.BaiViets where ss.UserId == userId select ss;
                 if (videoProfile == null)
                 {
                     ViewBag.Message = "You Not Have Anything In Playlist";
@@ -760,6 +772,8 @@ namespace AMNHAC.Controllers
                 dynamic mymodel = new ExpandoObject();
                 mymodel.user = checkuser;
                 mymodel.video = check;
+                
+                mymodel.baiviet = from ss in data.BaiViets where ss.UserId == userId select ss;
                 if (videoProfile == null)
                 {
                     ViewBag.Message = "You Not Have Anything In Playlist";
@@ -924,7 +938,8 @@ namespace AMNHAC.Controllers
                     mymodel.personVN = from ss in data.Persons where ss.idTheloai == 2 select ss;
                     mymodel.trangchu = from ss in data.Videos where ss.loaivideo != "user" select ss;
                     mymodel.videoTQ = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 1 select ss;
-
+                   
+                    
                     mymodel.videoVN = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 2 select ss;
                     return View("~/Views/Home/TrangChu.cshtml", mymodel);
                     /* ViewBag.Message = "This Have In Your PlayList !!";
@@ -949,6 +964,7 @@ namespace AMNHAC.Controllers
                 mymodel.videoTQ = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 1 select ss;
 
                 mymodel.videoVN = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 2 select ss;
+               
                 return View("~/Views/Home/TrangChu.cshtml", mymodel);
                 /*ViewBag.Message = "You Not Have Anything In Playlist";
                 return View("~/Views/Home/TrangChu.cshtml", all_sach);*/
@@ -964,6 +980,7 @@ namespace AMNHAC.Controllers
                 mymodel.videoTQ = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 1 select ss;
 
                 mymodel.videoVN = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 2 select ss;
+                
                 return View("~/Views/Home/TrangChu.cshtml", mymodel);
                 /*ViewBag.Message = "Your Playlist";
                 return View("~/Views/Home/TrangChu.cshtml", all_sach);*/
@@ -1024,7 +1041,8 @@ namespace AMNHAC.Controllers
             mymodel.videoTQ = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 1 select ss;
 
             mymodel.videoVN = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 2 select ss;
-
+            var userId = User.Identity.GetUserId();
+            mymodel.baiviet = from ss in data.BaiViets where ss.UserId == userId select ss;
             for (var item = 0; item < AfterD.Count; item++)
             {
                 if (AfterD[item].loaivideo != "user")
@@ -1264,10 +1282,11 @@ namespace AMNHAC.Controllers
             file.SaveAs(Server.MapPath("~/Content/images/" + file.FileName));
             return "/Content/images/" + file.FileName;
         }
-
+        
         public ActionResult Piano()
         {
             return View();
         }
+        
     }
 }

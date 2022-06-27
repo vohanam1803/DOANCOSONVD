@@ -7,20 +7,24 @@
 @using Microsoft.AspNet.Identity
 <p class="alert alert-danger">@ViewBag.Check  @User.Identity.GetUserName()!!</p>
 <h2 style="color:orangered;text-align:center;">Home Trang Chủ</h2>
-<form action="/Home/CreateAdmin" method="post">
-    <span class="icon"><i class="fa fa-search"></i></span>
-    <input type="search" name="Id" id="search" placeholder="Search Any Song.." title="Tìm kiếm" style="color:#000" />
-</form>
-<form action="/Home/TrangAdmin" method="get">
+<div class="Trangchu">
+    <form action="/Home/CreateAdmin" method="post">
 
-    <input class="btn js-buy-ticket s-full-width" type="submit" title="Về Hệ Thống" value="Về Hệ Thống" style="color: red; background-color: azure; " />
-</form>
-<form action="/Home/TrangChu" method="get">
+        <span class="icon"><i class="fa fa-search"></i></span>
+        <input type="search" name="Id" id="search" placeholder="Search Any Song.." title="Tìm kiếm" style="color:#000" />
+    </form>
+    <form action="/Home/TrangAdmin" method="get">
 
-    <input type="submit" title="Về Play List" value="Về Playlist" style="color:#000" />
-</form>
+        <input class="btn js-buy-ticket s-full-width" type="submit" title="Về Hệ Thống" value="Về Hệ Thống" />
+    </form>
+    <form action="/Home/TrangChu" method="get">
 
-<button class="btn js-buy-ticket s-full-width" onclick="openList(event)" data-id="Show" style="background-color:red;">Show Trang Chủ</button>
+        <input type="submit" title="Về Play List" value="Về Playlist" style="color:#000" />
+    </form>
+
+    <button class="btn js-buy-ticket s-full-width" onclick="openList(event)" data-id="Show" style="background-color:red;">Show Trang Chủ</button>
+
+</div>
 
 <h2>Tìm Kiếm Trong Playlist</h2>
 <form action="/Home/SearchInPlaylist" method="post">
@@ -39,34 +43,35 @@
             <div class="Nhac-Tieubieu">
                 @foreach (Video video in Model.trangchu)
                 {
-                    <div onclick="openList(event)" data-id="@video.id" style="--Nhac-0:#F8F8F8">
-                        <a class="lcourxo l1kpohop">
-                            <div class="lydohjg">
-                                <picture class="f8d0pxd sbgigcn p18r570z" height="45" style="--p18r570z-0:45px;--p18r570z-1:80px">
-                                    <img src="https://img.youtube.com/vi/@video.HinhNguonVideo/maxresdefault.jpg" alt="@video.title" class="i1by9jdf iwzmvkf" style="--iwzmvkf-0:transparent;--iwzmvkf-1:0;--i1by9jdf-0:#FFFFFF">
-                                </picture><span class="tge85oa e1lai98">@video.title</span><span class="s5fxhr2 e1lai98">
-                                    @video.author / Loại: @video.Theloai.nameTheloai
-                                </span>
-                            </div>
-                        </a>
+                    <div class="music-index">
+                        <div onclick="openList(event)" data-id="@video.id" style="--Nhac-0:#F8F8F8">
+                            <a class="lcourxo l1kpohop">
+                                <div class="lydohjg">
+                                    <picture class="f8d0pxd sbgigcn p18r570z" height="45" style="--p18r570z-0:45px;--p18r570z-1:80px">
+                                        <img src="https://img.youtube.com/vi/@video.HinhNguonVideo/maxresdefault.jpg" alt="@video.title" class="i1by9jdf iwzmvkf" style="--iwzmvkf-0:transparent;--iwzmvkf-1:0;--i1by9jdf-0:#FFFFFF">
+                                    </picture><span class="tge85oa e1lai98">@video.title</span><span class="s5fxhr2 e1lai98">
+                                        @video.author / Loại: @video.Theloai.nameTheloai
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+
+                        @*<form action="/Home/AddPlaylistAdmin" method="post">
+                                <input type="text" id="domain" name="Id" value="@item.title" style="display:none;" />
+                                <input type="text" id="domainCheckId" name="CheckId" value="@item.id" style="display:none;" />
+                                <select name="theloai" class="form-control">
+                                    <option value="hoa">Nhạc Hoa</option>
+                                    <option value="viet">Nhạc Việt</option>
+                                    <option value="khac">Nhạc Khác</option>
+                                </select>
+                                <button type="submit" style="color:black;">Add Your Playlist Admin In Index</button>
+                            </form>*@
+                        <form action="/Home/DetelePlaylistAdmin" method="post">
+                            <input type="text" id="domain" name="Id" value="@video.id" style="display:none;" />
+
+                            <button type="submit" style="color:black;">Detele From Playlist</button>
+                        </form>
                     </div>
-
-                    @*<form action="/Home/AddPlaylistAdmin" method="post">
-                            <input type="text" id="domain" name="Id" value="@item.title" style="display:none;" />
-                            <input type="text" id="domainCheckId" name="CheckId" value="@item.id" style="display:none;" />
-                            <select name="theloai" class="form-control">
-                                <option value="hoa">Nhạc Hoa</option>
-                                <option value="viet">Nhạc Việt</option>
-                                <option value="khac">Nhạc Khác</option>
-                            </select>
-                            <button type="submit" style="color:black;">Add Your Playlist Admin In Index</button>
-                        </form>*@
-                    <form action="/Home/DetelePlaylistAdmin" method="post">
-                        <input type="text" id="domain" name="Id" value="@video.id" style="display:none;" />
-
-                        <button type="submit" style="color:black;">Detele From Playlist</button>
-                    </form>
-
                     <div class="modal js-modal" onclick="closeAllList(event)" id="@video.id">
                         <div class="modal-container js-modal-container">
                             <div class="modal-close js-modal-close" onclick="closeList(event)" data-id="@video.id">
@@ -202,7 +207,7 @@
 
                                     <div class="Nhac-Trung">
                                         <picture class="sbgigcn p18r570z" style="--p18r570z-0:56.25%;--p18r570z-1:100%">
-                                            <img src="~/Content/images/AnhNhacViet.png" alt="Cho những người thích nghe nhạc Hoa" class="i1by9jdf iwzmvkf" style="--iwzmvkf-0:transparent;--iwzmvkf-1:0;--i1by9jdf-0:#FFFFFF">
+                                            <img src="https://img.nhandan.com.vn/Files/Images/2021/06/15/1623497692984-1623743417488.jpg" alt="Cho những người thích nghe nhạc Hoa" class="i1by9jdf iwzmvkf" style="--iwzmvkf-0:transparent;--iwzmvkf-1:0;--i1by9jdf-0:#FFFFFF">
                                         </picture><div class="s18w18cd"><h3 class="tnkt7b2 h1yokpfj">Cho những người thích nghe nhạc Việt</h3></div>
                                     </div>
                                     <p>Nền âm nhạc phong phú và phổ biến nhất đến từ Vpop!</p>
@@ -415,3 +420,34 @@
 
 </script>
 
+<style>
+    .Trangchu {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .btn {
+        color: black;
+        /* background-image: -webkit-linear-gradient(top,#fff 0,#e0e0e0 100%); */
+        background-image: -o-linear-gradient(top,#fff 0,#e0e0e0 100%);
+        /* background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#e0e0e0)); */
+        background-image: linear-gradient(to bottom,#fff 0,#e0e0e0 100%);
+        background-repeat: repeat-x;
+        border-color: #dbdbdb;
+        text-shadow: 0 1px 0 #fff;
+        border-color: #ccc;
+    }
+
+    input {
+        color: black;
+        /* background-image: -webkit-linear-gradient(top,#fff 0,#e0e0e0 100%); */
+        background-image: -o-linear-gradient(top,#fff 0,#e0e0e0 100%);
+        /* background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#e0e0e0)); */
+        background-image: linear-gradient(to bottom,#fff 0,#e0e0e0 100%);
+        background-repeat: repeat-x;
+        border-color: #dbdbdb;
+        text-shadow: 0 1px 0 #fff;
+        border-color: #ccc;
+    }
+</style>

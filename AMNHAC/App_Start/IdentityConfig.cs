@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using AMNHAC.Models;
+using static AMNHAC.Controllers.UserController;
 
 namespace AMNHAC
 {
@@ -38,6 +39,7 @@ namespace AMNHAC
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
+            PasswordHasher = new customHash();
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 

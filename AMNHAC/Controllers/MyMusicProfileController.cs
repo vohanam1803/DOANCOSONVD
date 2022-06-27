@@ -70,8 +70,7 @@ namespace AMNHAC.Controllers
         }*/
 
 
-
-
+       
         public async Task<ActionResult> Index()
         {
             var currentClaims = await UserManager.GetClaimsAsync(HttpContext.User.Identity.GetUserId());
@@ -222,9 +221,11 @@ namespace AMNHAC.Controllers
                 var check = /*from ss in data.Videos where ss.loaivideo == "user" && ss.UserId == userId select ss*/getget;
                 dynamic mymodel = new ExpandoObject();
                 mymodel.user = checkuser;
+                mymodel.baiviet = from ss in data.BaiViets where ss.UserId == userId select ss;
                 mymodel.video = check;
                 if (videoProfile == null)
                 {
+
                     ViewBag.Message = "You Not Have Anything In Playlist";
                     return View("~/Views/MyMusicProfile/Index.cshtml", mymodel);
                 }
@@ -272,6 +273,7 @@ namespace AMNHAC.Controllers
                 dynamic mymodel = new ExpandoObject();
                 mymodel.user = checkuser;
                 mymodel.video = check;
+                mymodel.baiviet = from ss in data.BaiViets where ss.UserId == userId select ss;
                 if (videoProfile == null)
                 {
                     ViewBag.Message = "You Not Have Anything In Playlist";

@@ -16,9 +16,6 @@
             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
-            Password
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.UserName)
         </th>
         <th>
@@ -38,17 +35,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
-            <td>
-                @if (item.PasswordHash == null)
-                {
-                    <p>No Password</p>
-                }
-                else
-                {
 
-                    @Html.DisplayFor(modelItem => item.PasswordHash)
-                }
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
@@ -66,3 +53,9 @@
 
 </table>
 
+<style>
+    tbody, tbody td,
+    tbody th {
+        border: 2px solid;
+    }
+</style>

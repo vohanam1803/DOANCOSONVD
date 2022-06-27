@@ -6,11 +6,14 @@
 }
 
 <h2 style="color:orangered;text-align:center;">Airtist (Tác Giả)</h2>
-<form action="/Home/TrangAdmin" method="get">
+<div class="Trangchu">
+    <form action="/Home/TrangAdmin" method="get">
 
-    <input class="btn js-buy-ticket s-full-width" type="submit" title="Về Hệ Thống" value="Về Hệ Thống" style="color:red;background-color:azure;" />
-</form>
-<button class="btn js-buy-ticket s-full-width" onclick="openList(event)" data-id="Show" style="background-color:red;">Show Trang Chủ</button>
+        <input class="btn js-buy-ticket s-full-width" type="submit" title="Về Hệ Thống" value="Về Hệ Thống" />
+    </form>
+    <button class="btn js-buy-ticket s-full-width" onclick="openList(event)" data-id="Show" style="background-color:red;">Show Trang Chủ</button>
+</div>
+
 <p>
     @Html.ActionLink("Create New", "CreateTacGia")
 </p>
@@ -434,3 +437,23 @@
 
 
 </script>
+
+<style>
+    .Trangchu {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .btn {
+        color: black;
+        /* background-image: -webkit-linear-gradient(top,#fff 0,#e0e0e0 100%); */
+        background-image: -o-linear-gradient(top,#fff 0,#e0e0e0 100%);
+        /* background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#e0e0e0)); */
+        background-image: linear-gradient(to bottom,#fff 0,#e0e0e0 100%);
+        background-repeat: repeat-x;
+        border-color: #dbdbdb;
+        text-shadow: 0 1px 0 #fff;
+        border-color: #ccc;
+    }
+</style>

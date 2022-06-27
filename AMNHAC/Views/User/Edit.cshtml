@@ -6,49 +6,48 @@
 }
 
 <h2>Edit</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>AspNetUser</h4>
+<form action="/User/EditUser" method="post">
+    <div style="color:black;">
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+        <dl class="dl-horizontal">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <dt style="color:black">
+                Id User
+            </dt>
+
+            <dd>
+                <input type="text" id="test" name="test" value="@Model.Id" disabled />
+            </dd>
+            <dd>
+                <input type="text" id="domain" name="Id" value="@Model.Id" style="display:none;" />
+            </dd>
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PasswordHash, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PasswordHash, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PasswordHash, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <dt style="color: black">
+                Password
+            </dt>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <dd>
+                <input type="password" id="domain" name="name" value="@Model.PasswordHash" />
+            </dd>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+            <dt style="color: black">
+                UserName
+            </dt>
+
+            <dd>
+                <input type="text" id="domain" name="mota" value="@Model.Name" />
+            </dd>
+
+           
+
+        </dl>
     </div>
-}
+
+
+    <button type="submit" style="color:white;" class="btn btn-success">Save</button>
+</form>
+
 
 <div>
     @Html.ActionLink("Back to List", "Account")

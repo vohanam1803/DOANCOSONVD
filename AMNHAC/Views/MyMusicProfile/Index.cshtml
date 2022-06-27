@@ -5,9 +5,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @using Microsoft.AspNet.Identity
-<form action="/Home/Post" method="post" class="mt-32">
-    <button type="submit" style="background-color:red;color:black;">Vô Quyền Admin</button>
-</form>
+@if (Request.IsAuthenticated)
+{
+    if (User.Identity.GetUserName() == "xincaiten2001@gmail.com")
+    {
+        <form action="/Home/Post" method="post" class="mt-32">
+            <button type="submit" style="background-color:red;color:black;">Vô Quyền Admin</button>
+        </form>
+    }
+
+}
+
 <link href="~/Content/css/content.css" rel="stylesheet" />
 <div class="information">
     @foreach (AspNetUser user in Model.user)
@@ -22,7 +30,7 @@
                 <div class="member_type">
                     <i class="fa fa-users mt-8"> Free member </i>
                     <div class="private_profile">
-                        <i class="fa fa-eye-slash mt-8"> Private Profile</i>
+                        <i class="fa fa-eye-slash mt-8"> Private Profile</i><a href="/Manage/Index"><i class="fa fa-pencil"></i></a>
                         <form action="/MyMusicProfile/ThayAvatar" method="post">
                             <button type="submit" style="background-color:red;color:black;" class="change_profile mt-8">
                                 Change Avatar
@@ -72,10 +80,18 @@
                         @if (item.chedo == "CK")
                         {
                             <i class="fa fa-globe" aria-hidden="true">Công Khai</i>
+                            <form action="/Discover/DeleteBaiViet" method="post">
+                                <input type="text" id="domain" name="Id" value="@item.idPost" style="display:none;" />
+                                <button type="submit" style="color:black;">Delete</button>
+                            </form>
                         }
                         else
                         {
                             <i class="fa fa-globe" aria-hidden="true">Cá Nhân</i>
+                            <form action="/Discover/DeleteBaiViet" method="post">
+                                <input type="text" id="domain" name="Id" value="@item.idPost" style="display:none;" />
+                                <button type="submit" style="color:black;">Delete</button>
+                            </form>
                         }
                     </div>
                 </div>
@@ -86,7 +102,17 @@
             <div class="caption">
                 @item.Mota
             </div>
-            @if (item.video == "")
+            @if (item.image == "" || item.image == null)
+            {
+
+            }
+            else
+            {
+                <div class="status_img text-center mt-8">
+                    <img src="@item.image" alt="">
+                </div>
+            }
+            @if (item.video == "" || item.video == null)
             {
 
             }
@@ -531,6 +557,10 @@
         border-color: #dbdbdb;
         text-shadow: 0 1px 0 #fff;
         border-color: #ccc;
+    }
+    .status-main {
+        width: 500px;
+        margin: 0 auto;
     }
 </style>
 

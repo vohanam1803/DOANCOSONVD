@@ -1,4 +1,5 @@
-﻿<div id="header">
+﻿
+<div id="header">
     <div class="main_name">
         <a href="~/Home/Index" class="home">
 
@@ -32,12 +33,13 @@
         <a href="/Discover/Test" class="fa fa-upload" title="Up bài của bạn">Upload song</a>
         <a>/</a>
         <a href="/Discover/IndexDiscover" title="Bản cover"> Discover</a>
-        <a href="/MyMusicProfile/Index" style="margin: 12px;" title="Trang Cá Nhân"> My music profile</a>
+       
 
         <select id="gender" onchange="genderChanged(this)" style="color:white; font-size: 21px; text-decoration: none; text-transform: uppercase; background-color:black;">
-            <option value="">--More--</option>
+            <option value="" style="text-align:center;">--More--</option>
             <option value="Dis">Discover</option>
-            <option value="VP">Piano Ảo</option>
+            <option value="VP">Piano</option>
+            <option value="PF">My music profile</option>
         </select>
 
         @*<a href="#" title="Xem Thêm"> More</a>*@
@@ -69,5 +71,9 @@
         else if (value === 'VP') {
             window.location.replace("https://localhost:44399/Home/Piano");
         }
+        else if (value === 'PF') {
+            window.location.replace("https://localhost:44399/MyMusicProfile/Index");
+        }
+        
     }
 </script>

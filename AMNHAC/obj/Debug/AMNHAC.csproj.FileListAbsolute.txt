@@ -1530,3 +1530,5 @@ D:\DOANCOSONVD\AMNHAC\obj\Debug\AMNHAC.csproj.CoreCompileInputs.cache
 D:\DOANCOSONVD\AMNHAC\obj\Debug\AMNHAC.csproj.CopyComplete
 D:\DOANCOSONVD\AMNHAC\obj\Debug\AMNHAC.dll
 D:\DOANCOSONVD\AMNHAC\obj\Debug\AMNHAC.pdb
+D:\DOANCOSONVD\AMNHAC\bin\System.Web.Helpers.Crypto.dll
+D:\DOANCOSONVD\AMNHAC\bin\System.Web.Helpers.Crypto.pdb
