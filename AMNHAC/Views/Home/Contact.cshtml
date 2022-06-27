@@ -1,17 +1,488 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿
+@{
+    ViewBag.Title = "Piano";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<h2>Piano</h2>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+
+
+
+<section id="wrap">
+    <header>
+        <h1>NVD Piano</h1>
+        <h2>Use your keyboard. Hover for hints.</h2>
+    </header>
+
+    <section id="main">
+        <section id="main">
+            <div class="nowplaying"></div>
+            <div class="keys">
+                @*Tone 4*@
+                <div class="key" id="C4">
+                    <span class="hints">C</span>
+                </div>
+                <div class="key" id="D4">
+                    <span class="hints">D</span>
+                </div>
+                <div class="key" id="E4">
+                    <span class="hints">E</span>
+                </div>
+                <div class="key" id="F4">
+                    <span class="hints">F</span>
+                </div>
+                <div class="key" id="G4">
+                    <span class="hints">G</span>
+                </div>
+                <div class="key" id="A4">
+                    <span class="hints">A</span>
+                </div>
+                <div class="key" id="B4">
+                    <span class="hints">B</span>
+                </div>
+
+                <div data-key="Db4" class="key sharp" id="Db4">
+                    <span class="hints">C#</span>
+                </div>
+                <div data-key="Eb4" class="key sharp" id="Eb4">
+                    <span class="hints">D#</span>
+                </div>
+                <div data-key="Gb4" class="key sharp" id="Gb4">
+                    <span class="hints">F#</span>
+                </div>
+                <div data-key="Ab4" class="key sharp" id="Ab4">
+                    <span class="hints">G#</span>
+                </div>
+                <div data-key="Bb4" class="key sharp" id="Bb4">
+                    <span class="hints">A#</span>
+                </div>
+                @*Tone 5*@
+                <div class="key" id="C5">
+                    <span class="hints">C</span>
+                </div>
+                <div class="key" id="D5">
+                    <span class="hints">D</span>
+                </div>
+                <div class="key" id="E5">
+                    <span class="hints">E</span>
+                </div>
+                <div class="key" id="F5">
+                    <span class="hints">F</span>
+                </div>
+                <div class="key" id="G5">
+                    <span class="hints">G</span>
+                </div>
+                <div class="key" id="A5">
+                    <span class="hints">A</span>
+                </div>
+                <div class="key" id="B5">
+                    <span class="hints">B</span>
+                </div>
+                <div data-key="Db5" class="key sharp" id="Db5">
+                    <span class="hints">C#</span>
+                </div>
+                <div data-key="Eb5" class="key sharp" id="Eb5">
+                    <span class="hints">D#</span>
+                </div>
+                <div data-key="Gb5" class="key sharp" id="Gb5">
+                    <span class="hints">F#</span>
+                </div>
+                <div data-key="Ab5" class="key sharp" id="Ab5">
+                    <span class="hints">G#</span>
+                </div>
+                <div data-key="Bb5" class="key sharp" id="Bb5">
+                    <span class="hints">A#</span>
+                </div>
+                @*Tone 6*@
+                <div class="key" id="C6">
+                    <span class="hints">C</span>
+                </div>
+                <div class="key" id="D6">
+                    <span class="hints">D</span>
+                </div>
+                <div class="key" id="E6">
+                    <span class="hints">E</span>
+                </div>
+                <div class="key" id="F6">
+                    <span class="hints">F</span>
+                </div>
+                <div class="key" id="G6">
+                    <span class="hints">G</span>
+                </div>
+                <div class="key" id="A6">
+                    <span class="hints">A</span>
+                </div>
+                <div class="key" id="B6">
+                    <span class="hints">B</span>
+                </div>
+                <div data-key="Db6" class="key sharp" id="Db6">
+                    <span class="hints">C#</span>
+                </div>
+                <div data-key="Eb6" class="key sharp" id="Eb6">
+                    <span class="hints">D#</span>
+                </div>
+                <div data-key="Gb6" class="key sharp" id="Gb6">
+                    <span class="hints">F#</span>
+                </div>
+                <div data-key="Ab6" class="key sharp" id="Ab6">
+                    <span class="hints">G#</span>
+                </div>
+                <div data-key="Bb6" class="key sharp" id="Bb6">
+                    <span class="hints">A#</span>
+                </div>
+                @*Tone 7*@
+                <div class="key" id="C7">
+                    <span class="hints">C</span>
+                </div>
+                <div class="key" id="D7">
+                    <span class="hints">D</span>
+                </div>
+                <div class="key" id="E7">
+                    <span class="hints">E</span>
+                </div>
+                <div class="key" id="F7">
+                    <span class="hints">F</span>
+                </div>
+                <div class="key" id="G7">
+                    <span class="hints">G</span>
+                </div>
+                <div class="key" id="A7">
+                    <span class="hints">A</span>
+                </div>
+                <div class="key" id="B7">
+                    <span class="hints">B</span>
+                </div>
+                <div data-key="Db7" class="key sharp" id="Db7">
+                    <span class="hints">C#</span>
+                </div>
+                <div data-key="Eb7" class="key sharp" id="Eb7">
+                    <span class="hints">D#</span>
+                </div>
+                <div data-key="Gb7" class="key sharp" id="Gb7">
+                    <span class="hints">F#</span>
+                </div>
+                <div data-key="Ab7" class="key sharp" id="Ab7">
+                    <span class="hints">G#</span>
+                </div>
+                <div data-key="Bb7" class="key sharp" id="Bb7">
+                    <span class="hints">A#</span>
+                </div>
+                @*Tone 8*@
+                <div class="key" id="C8">
+                    <span class="hints">C</span>
+                </div>
+                <div class="key" id="D8">
+                    <span class="hints">D</span>
+                </div>
+                <div class="key" id="E8">
+                    <span class="hints">E</span>
+                </div>
+                <div class="key" id="F8">
+                    <span class="hints">F</span>
+                </div>
+                <div class="key" id="G8">
+                    <span class="hints">G</span>
+                </div>
+                <div class="key" id="A8">
+                    <span class="hints">A</span>
+                </div>
+                <div class="key" id="B8">
+                    <span class="hints">B</span>
+                </div>
+                <div data-key="Db8" class="key sharp" id="Db8">
+                    <span class="hints">C#</span>
+                </div>
+                <div data-key="Eb8" class="key sharp" id="Eb8">
+                    <span class="hints">D#</span>
+                </div>
+                <div data-key="Gb8" class="key sharp" id="Gb8">
+                    <span class="hints">F#</span>
+                </div>
+                <div data-key="Ab8" class="key sharp" id="Ab8">
+                    <span class="hints">G#</span>
+                </div>
+                <div data-key="Bb8" class="key sharp" id="Bb8">
+                    <span class="hints">A#</span>
+                </div>
+                @*Tone 9*@
+                <div class="key" id="C9">
+                    <span class="hints">C</span>
+                </div>
+
+            </div>
+
+        </section>
+    </section>
+</section>
+
+<script src="~/Scripts/PianoNVD.js"></script>
+
+
+
+<style>
+
+    html {
+        background: #000;
+        font-family: 'Noto Serif', serif;
+        -webkit-font-smoothing: antialiased;
+        text-align: center;
+    }
+
+    video#bgvid {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        transform: translateX(-50%) translateY(-50%);
+        background-size: cover;
+    }
+
+    header {
+        position: relative;
+        margin: 30px 0;
+    }
+
+        header:after {
+            content: '';
+            width: 460px;
+            height: 15px;
+            background: url(images/intro-div.svg) no-repeat center;
+            display: inline-block;
+            text-align: center;
+            background-size: 70%;
+        }
+
+    h1 {
+        color: #fff;
+        font-size: 50px;
+        font-weight: 400;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    h2 {
+        color: #fff;
+        font-size: 24px;
+        font-style: italic;
+        font-weight: 400;
+        margin: 0 0 30px;
+    }
+
+    .nowplaying {
+        font-size: 120px;
+        line-height: 1;
+        color: #eee;
+        text-shadow: 0 0 5rem #028ae9;
+        transition: all .07s ease;
+        min-height: 120px;
+    }
+
+    .keys {
+        display: block;
+        width: 100%;
+        height: 350px;
+        position: relative;
+
+        @* cursor: none;
+        *@
+    }
+
+    .key {
+        position: relative;
+        border: 4px solid black;
+        border-radius: .5rem;
+        transition: all .07s ease;
+        display: block;
+        box-sizing: border-box;
+        z-index: 2;
+    }
+
+        .key:not(.sharp) {
+            float: left;
+            width: 10%;
+            height: 100%;
+            background: rgba(255, 255, 255, .8);
+            width: 32px;
+            height: 160px;
+        }
+
+        .key.sharp {
+            position: absolute;
+            width: 6%;
+            height: 60%;
+            background: #000;
+            color: #eee;
+            top: 0;
+            z-index: 3;
+            width: 20px;
+            height: 100px;
+        }
+
+        .key[data-key="Db4"] {
+            left: 1.8%;
+        }
+
+        .key[data-key="Eb4"] {
+            left: 4.3%;
+        }
+
+        .key[data-key="Gb4"] {
+            left: 9.4%;
+        }
+
+        .key[data-key="Ab4"] {
+            left: 12%;
+        }
+
+        .key[data-key="Bb4"] {
+            left: 14.4%;
+        }
+
+        .key[data-key="Db5"] {
+            left: 19.5%;
+        }
+
+        .key[data-key="Eb5"] {
+            left: 22.1%;
+        }
+
+        .key[data-key="Gb5"] {
+            left: 27.2%;
+        }
+
+        .key[data-key="Ab5"] {
+            left: 29.6%;
+        }
+
+        .key[data-key="Bb5"] {
+            left: 32.1%;
+        }
+
+        .key[data-key="Db6"] {
+            left: 37.2%;
+        }
+
+        .key[data-key="Eb6"] {
+            left: 39.8%;
+        }
+
+        .key[data-key="Gb6"] {
+            left: 44.9%;
+        }
+
+        .key[data-key="Ab6"] {
+            left: 47.4%;
+        }
+
+        .key[data-key="Bb6"] {
+            left: 49.8%;
+        }
+
+        .key[data-key="Db7"] {
+            left: 55%;
+        }
+
+        .key[data-key="Eb7"] {
+            left: 57.4%;
+        }
+
+        .key[data-key="Gb7"] {
+            left: 62.6%;
+        }
+
+        .key[data-key="Ab7"] {
+            left: 65.1%;
+        }
+
+        .key[data-key="Bb7"] {
+            left: 67.6%;
+        }
+
+        .key[data-key="Db8"] {
+            left: 72.6%;
+        }
+
+        .key[data-key="Eb8"] {
+            left: 75.3%;
+        }
+
+        .key[data-key="Gb8"] {
+            left: 80.1%;
+        }
+
+        .key[data-key="Ab8"] {
+            left: 82.8%;
+        }
+
+        .key[data-key="Bb8"] {
+            left: 85.3%;
+        }
+
+       
+
+    .playing {
+        transform: scale(.95);
+        border-color: #028ae9;
+        box-shadow: 0 0 1rem #028ae9;
+    }
+
+    @* .hints {
+        display: block;
+        width: 100%;
+        opacity: 0;
+        position: absolute;
+        bottom: 7px;
+        transition: opacity .3s ease-out;
+        font-size: 20px;
+    }
+
+    *@
+
+    @* .keys:hover .hints {
+        opacity: 1;
+    }
+
+    *@
+</style>
+
+@*<script>
+        const keys = document.querySelectorAll(".key"),
+            note = document.querySelector(".nowplaying"),
+            hints = document.querySelectorAll(".hints");
+        console.log(hints);
+        function playNote(e) {
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`),
+                key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+            console.log(audio);
+            if (!key) return;
+
+            const keyNote = key.getAttribute("data-note");
+
+            key.classList.add("playing");
+            note.innerHTML = keyNote;
+            audio.currentTime = 0;
+            audio.play();
+        }
+
+        function removeTransition(e) {
+            if (e.propertyName !== "transform") return;
+            this.classList.remove("playing");
+        }
+
+        function hintsOn(e, index) {
+            e.setAttribute("style", "transition-delay:" + index * 50 + "ms");
+        }
+
+        hints.forEach(hintsOn);
+
+        keys.forEach(key => key.addEventListener("transitionend", removeTransition));
+
+        window.addEventListener("keydown", playNote);
+
+    </script>*@

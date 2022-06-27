@@ -6,6 +6,7 @@
     <title>Hợp Âm Cho Bất Kỳ Bài Hát Nào</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/css/header.css" rel="stylesheet" />
     <link href="~/Content/css/footer.css" rel="stylesheet" />
     <link href="~/Content/css/trangchu.css" rel="stylesheet" />
@@ -20,9 +21,11 @@
             src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule
             src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
 </head>
 <body>
-    <div class="night">
+@*    <div class="night">
         <div class="shooting_star"></div>
         <div class="shooting_star"></div>
         <div class="shooting_star"></div>
@@ -43,11 +46,11 @@
         <div class="shooting_star"></div>
         <div class="shooting_star"></div>
         <div class="shooting_star"></div>
-    </div>
+    </div>*@
     <header>
         @Html.Partial("~/Views/Header/header.cshtml")
     </header>
-    <div id="content">
+    <div id="content" >
         @RenderBody()
 
     </div>

@@ -429,6 +429,21 @@
     <Content Include="Content\css\ticket.css" />
     <Content Include="Content\css\trangchu.css" />
     <Content Include="Content\images\maxresdefault.jpg" />
+    <Content Include="Content\js\asjs10.js" />
+    <Content Include="Content\js\asjs11.js" />
+    <Content Include="Content\js\asjs12.js" />
+    <Content Include="Content\js\asjs13.js" />
+    <Content Include="Content\js\asjs14.js" />
+    <Content Include="Content\js\js1.js" />
+    <Content Include="Content\js\js2.js" />
+    <Content Include="Content\js\js3.js" />
+    <Content Include="Content\js\js4.js" />
+    <Content Include="Content\js\js6.js" />
+    <Content Include="Content\js\js7.js" />
+    <Content Include="Content\js\js8.js" />
+    <Content Include="Content\js\js9.js" />
+    <Content Include="Content\js\jsNode.js" />
+    <Content Include="Content\js\PianoNVD.js" />
     <Content Include="Content\music\1933377945.mp3" />
     <Content Include="Content\music\3136278587.mp3" />
     <Content Include="Content\music\314486061.mp3" />
@@ -449,7 +464,6 @@
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Content\jsconfig.json" />
     <None Include="Models\DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
@@ -464,6 +478,66 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Home\notes\a48.mp3" />
+    <Content Include="Home\notes\a49.mp3" />
+    <Content Include="Home\notes\a50.mp3" />
+    <Content Include="Home\notes\a51.mp3" />
+    <Content Include="Home\notes\a52.mp3" />
+    <Content Include="Home\notes\a53.mp3" />
+    <Content Include="Home\notes\a54.mp3" />
+    <Content Include="Home\notes\a55.mp3" />
+    <Content Include="Home\notes\a56.mp3" />
+    <Content Include="Home\notes\a57.mp3" />
+    <Content Include="Home\notes\a65.mp3" />
+    <Content Include="Home\notes\a66.mp3" />
+    <Content Include="Home\notes\a68.mp3" />
+    <Content Include="Home\notes\a69.mp3" />
+    <Content Include="Home\notes\a70.mp3" />
+    <Content Include="Home\notes\a71.mp3" />
+    <Content Include="Home\notes\a72.mp3" />
+    <Content Include="Home\notes\a73.mp3" />
+    <Content Include="Home\notes\a74.mp3" />
+    <Content Include="Home\notes\a75.mp3" />
+    <Content Include="Home\notes\a76.mp3" />
+    <Content Include="Home\notes\a77.mp3" />
+    <Content Include="Home\notes\a78.mp3" />
+    <Content Include="Home\notes\a79.mp3" />
+    <Content Include="Home\notes\a80.mp3" />
+    <Content Include="Home\notes\a81.mp3" />
+    <Content Include="Home\notes\a82.mp3" />
+    <Content Include="Home\notes\a83.mp3" />
+    <Content Include="Home\notes\a84.mp3" />
+    <Content Include="Home\notes\a85.mp3" />
+    <Content Include="Home\notes\a86.mp3" />
+    <Content Include="Home\notes\a87.mp3" />
+    <Content Include="Home\notes\a88.mp3" />
+    <Content Include="Home\notes\a89.mp3" />
+    <Content Include="Home\notes\a90.mp3" />
+    <Content Include="Home\notes\b49.mp3" />
+    <Content Include="Home\notes\b50.mp3" />
+    <Content Include="Home\notes\b52.mp3" />
+    <Content Include="Home\notes\b53.mp3" />
+    <Content Include="Home\notes\b54.mp3" />
+    <Content Include="Home\notes\b56.mp3" />
+    <Content Include="Home\notes\b57.mp3" />
+    <Content Include="Home\notes\b66.mp3" />
+    <Content Include="Home\notes\b67.mp3" />
+    <Content Include="Home\notes\b68.mp3" />
+    <Content Include="Home\notes\b69.mp3" />
+    <Content Include="Home\notes\b71.mp3" />
+    <Content Include="Home\notes\b72.mp3" />
+    <Content Include="Home\notes\b73.mp3" />
+    <Content Include="Home\notes\b74.mp3" />
+    <Content Include="Home\notes\b76.mp3" />
+    <Content Include="Home\notes\b79.mp3" />
+    <Content Include="Home\notes\b80.mp3" />
+    <Content Include="Home\notes\b81.mp3" />
+    <Content Include="Home\notes\b83.mp3" />
+    <Content Include="Home\notes\b84.mp3" />
+    <Content Include="Home\notes\b86.mp3" />
+    <Content Include="Home\notes\b87.mp3" />
+    <Content Include="Home\notes\b89.mp3" />
+    <Content Include="Home\notes\b90.mp3" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -519,6 +593,7 @@
     <Content Include="Views\User\Account.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\MyMusicProfile\ThayAvatar.cshtml" />
+    <Content Include="Views\MyMusicProfile\GetNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

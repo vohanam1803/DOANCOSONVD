@@ -1,27 +1,68 @@
 ﻿@using AMNHAC.Models
 @model dynamic
 <link href="~/Content/css/ticket.css" rel="stylesheet" />
-<h3 class="title" style="text-align:center;color:red;"> @ViewBag.Message </h3>
+<link href="~/Content/css/artist.css" rel="stylesheet" />
+<link href="~/Content/css/header.css" rel="stylesheet" />
+
 <body>
     @using Microsoft.AspNet.Identity
-    <section class="dau1">
-        <header>
-            <div class="caidau">
-                <h1 class="caichu">
-                    <span class="chudau">
-                        <font style="vertical-align: inherit;">
-                            <font style="vertical-align: inherit;">@Html.ActionLink("Xin Chào " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Bạn đã có tài khoản?" })</font>
-                        </font>
-                    </span>
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="margin-top: -10px;">
+        <!-- Indicators -->
+        <ol class="carousel-indicators" style="display:none">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
 
-                    <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;"> Hãy xây lên giấc mơ của riêng bạn, nếu không người khác sẽ thuê bạn xây dựng giấc mơ của họ đó.</font>
-                    </font>
-                </h1>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="https://c8.alamy.com/comp/T5MPR7/blue-music-theme-abstract-musical-background-T5MPR7.jpg" alt="...">
+                <div class="carousel-caption">
+                    <h1>HÔM NAY NGHE GÌ?</h1>
+                </div>
             </div>
-        </header>
+            <div class="item">
+                <img src="https://cdn3.vectorstock.com/i/1000x1000/57/37/background-on-a-musical-theme-vector-45737.jpg" alt="...">
+                <div class="carousel-caption">
+                    <h1>Bạn đang vui hay buồn, đang tiệc tùng hay trên đường đi phượt, lúc thức dậy hay đang vào giấc ngủ ... những gì bạn cần đều có ở đây!</h1>
+                </div>
+            </div>
+            <div class="item">
+                <img src="https://i.pinimg.com/originals/24/2b/4f/242b4f66b6d14b8a331c6e4289fe2ef5.jpg" alt="...">
+                <div class="carousel-caption">
+                    <h1>Nếu bạn nhìn đủ sâu, bạn sẽ thấy âm nhạc.Trái tim của thiên nhiên là âm nhạc ở khắp nơi.</h1>
+                </div>
+            </div>
+        </div>
 
-    </section>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+
+    @*  <section class="dau1">
+            <header>
+                <div class="caidau">
+                    <h1 class="caichu">
+                        <span class="chudau">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">@Html.ActionLink("Xin Chào " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Bạn đã có tài khoản?" })</font>
+                            </font>
+                        </span>
+
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;"> Hãy xây lên giấc mơ của riêng bạn, nếu không người khác sẽ thuê bạn xây dựng giấc mơ của họ đó.</font>
+                        </font>
+                    </h1>
+                </div>
+            </header>
+
+        </section>*@
 
 
 
@@ -43,64 +84,67 @@
                 <div class="Nhac-Tieubieu">
                     @foreach (Video video in Model.videoTQ)
                     {
-                        <div id="@video.loaivideo" onclick="openVideo(event)" data-id="@video.id" name="@video.loaivideo" set-videoplay="@video.vitrivideo" style="--Nhac-0:#F8F8F8">
-                            <a class="lcourxo l1kpohop">
-                                <div class="lydohjg">
-                                    <picture class="f8d0pxd sbgigcn p18r570z" height="45" style="--p18r570z-0:45px;--p18r570z-1:80px">
-                                        <img src="https://img.youtube.com/vi/@video.HinhNguonVideo/maxresdefault.jpg" alt="@video.title" class="i1by9jdf iwzmvkf" style="--iwzmvkf-0:transparent;--iwzmvkf-1:0;--i1by9jdf-0:#FFFFFF">
-                                    </picture><span class="tge85oa e1lai98">@video.title</span><span class="s5fxhr2 e1lai98">
-                                        @video.author / @video.Theloai.nameTheloai
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
+                        <div class="music-index">
+                            <div id="@video.loaivideo" onclick="openVideo(event)" data-id="@video.id" name="@video.loaivideo" set-videoplay="@video.vitrivideo" style="--Nhac-0:#F8F8F8;flex:1;cursor:pointer">
+                                <a class="lcourxo l1kpohop">
+                                    <div class="lydohjg">
+                                        <picture class="f8d0pxd sbgigcn p18r570z" height="45" style="--p18r570z-0:45px;--p18r570z-1:80px">
+                                            <img src="https://img.youtube.com/vi/@video.HinhNguonVideo/maxresdefault.jpg" alt="@video.title" class="i1by9jdf iwzmvkf" style="--iwzmvkf-0:transparent;--iwzmvkf-1:0;--i1by9jdf-0:#FFFFFF">
+                                        </picture><span class="tge85oa e1lai98">@video.title</span><span class="s5fxhr2 e1lai98">
+                                            @video.author / @video.Theloai.nameTheloai
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
 
 
 
-                        <form action="/Home/AddPlaylist" method="post">
-                            @using Microsoft.AspNet.Identity
-                            @if (Request.IsAuthenticated)
-                            {
-                                <input type="text" id="domain" name="Id" value="@video.HinhNguonVideo" style="display:none;" />
-                                <input type="text" id="domainCheckId" name="CheckId" value="@video.HinhNguonVideo/user/@User.Identity.GetUserName()" style="display:none;" />
-                                <input type="text" id="GetUserName" name="GetUserName" value="@User.Identity.GetUserName()" style="display:none;" />
-                                <button type="submit" style="color:black;">Add Your Playlist</button>
-                            }
-                        </form>
+                            <form action="/Home/AddPlaylist" method="post">
+                                @using Microsoft.AspNet.Identity
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <input type="text" id="domain" name="Id" value="@video.HinhNguonVideo" style="display:none;" />
+                                    <input type="text" id="domainCheckId" name="CheckId" value="@video.HinhNguonVideo/user/@User.Identity.GetUserName()" style="display:none;" />
+                                    <input type="text" id="GetUserName" name="GetUserName" value="@User.Identity.GetUserName()" style="display:none;" />
+                                    <button type="submit" style="color:black;">Add Your Playlist</button>
+                                }
+                            </form>
 
 
-                        <div class="modal js-modal" onclick="closeVideo(event)" id="@video.id">
-                            <div class="modal-container js-modal-container">
-                                <div class="modal-close js-modal-close" onclick="closeallVideo(event)" data-id="@video.id">
-                                    <i class="fa fa-times"></i>
-                                </div>
-
-                                <header class="modal-header">
-                                    <div class="Lyrics-form ">
-                                        <i class="modal-heading-icon fa fa-info"></i>
-                                        <h1 class="Lyrics-title">@video.title</h1>
+                            <div class="modal js-modal" onclick="closeVideo(event)" id="@video.id">
+                                <div class="modal-container js-modal-container">
+                                    <div class="modal-close js-modal-close" onclick="closeallVideo(event)" data-id="@video.id">
+                                        <i class="fa fa-times"></i>
                                     </div>
 
-                                </header>
+                                    <header class="modal-header">
+                                        <div class="Lyrics-form ">
+                                            <i class="modal-heading-icon fa fa-info"></i>
+                                            <h1 class="Lyrics-title">@video.title</h1>
+                                        </div>
 
-                                <div class="modal-body">
-                                    <div class="Lyrics">
-                                        <p class="Lyrics-info">
+                                    </header>
 
-                                            <iframe id="@video.vitrivideo" width="560" height="315" src="https://www.youtube.com/embed/@video.HinhNguonVideo?" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                            <div style="color:black;">
-                                                @video.link
-                                            </div>
-                                        </p>
+                                    <div class="modal-body">
+                                        <div class="Lyrics">
+                                            <p class="Lyrics-info">
 
+                                                <iframe id="@video.vitrivideo" width="560" height="315" src="https://www.youtube.com/embed/@video.HinhNguonVideo?" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                <div style="color:black;">
+                                                    @video.link
+                                                </div>
+                                            </p>
+
+                                        </div>
                                     </div>
-                                </div>
 
-                                <footer class="modal-footer">
-                                    <p class="modal-help text-black">Need <a href="">help?</a></p>
-                                </footer>
+                                    <footer class="modal-footer">
+                                        <p class="modal-help text-black">Need <a href="">help?</a></p>
+                                    </footer>
+                                </div>
                             </div>
                         </div>
+
                     }
 
 
@@ -120,7 +164,7 @@
 
                     <div class="Nhac-Trung">
                         <picture class="sbgigcn p18r570z" style="--p18r570z-0:56.25%;--p18r570z-1:100%">
-                            <img src="https://ajteducation.com/images/6_C%E1%BB%90_%C4%90%C3%94_/B%E1%BA%AEC_KINH.jpg" alt="Cho những người thích nghe nhạc Việt" class="i1by9jdf iwzmvkf" style="--iwzmvkf-0:transparent;--iwzmvkf-1:0;--i1by9jdf-0:#FFFFFF">
+                            <img src="https://img.nhandan.com.vn/Files/Images/2021/06/15/1623497692984-1623743417488.jpg" alt="Cho những người thích nghe nhạc Việt" class="i1by9jdf iwzmvkf" style="--iwzmvkf-0:transparent;--iwzmvkf-1:0;--i1by9jdf-0:#FFFFFF">
                         </picture><div class="s18w18cd"><h3 class="tnkt7b2 h1yokpfj">Cho những người thích nghe nhạc Việt</h3></div>
                     </div>
                     <p>Nền âm nhạc phong phú và phổ biến nhất đến từ Vpop!</p>
@@ -381,18 +425,18 @@
     </div>
 
     @*TicKet*@
-    <div id="tour" class="tour-section">
+    <!--<div id="tour" class="tour-section">
         <div class="content-section">
             <h2 class="section-heading text-white">Top Music</h2>
-            <p class="section-sub-heading text-white">Listen music in your heart!</p>
-            <!-- Ticket -->
-            <ul class="ticket-list">
-                <li>September </li>
-                <li>October  </li>
-                <li>November </li>
-            </ul>
-            <!-- Places -->
-            <div class="row list-place">
+            <p class="section-sub-heading text-white">Listen music in your heart!</p>-->
+    <!-- Ticket -->
+    <!--<ul class="ticket-list">
+        <li>September </li>
+        <li>October  </li>
+        <li>November </li>
+    </ul>-->
+    <!-- Places -->
+    <!--<div class="row list-place">
                 <div class="col col-third s-col-full mt-16">
                     <img src="https://i.ytimg.com/vi/5Akp2xPeIrM/maxresdefault.jpg" alt="New York" class="place-img">
                     <div class="place-body">
@@ -521,7 +565,7 @@
                 <p class="modal-help text-black">Need <a href="">help?</a></p>
             </footer>
         </div>
-    </div>
+    </div>-->
 
     <script>
         function openList(e) {
