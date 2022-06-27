@@ -2392,6 +2392,10 @@ namespace AMNHAC.Models
 		
 		private System.Nullable<System.DateTime> _newday;
 		
+		private string _image;
+		
+		private System.Nullable<int> _chedotimkiem;
+		
 		private EntityRef<AspNetUser> _AspNetUser;
 		
     #region Extensibility Method Definitions
@@ -2412,6 +2416,10 @@ namespace AMNHAC.Models
     partial void OnchedoChanged();
     partial void OnnewdayChanging(System.Nullable<System.DateTime> value);
     partial void OnnewdayChanged();
+    partial void OnimageChanging(string value);
+    partial void OnimageChanged();
+    partial void OnchedotimkiemChanging(System.Nullable<int> value);
+    partial void OnchedotimkiemChanged();
     #endregion
 		
 		public BaiViet()
@@ -2560,6 +2568,46 @@ namespace AMNHAC.Models
 					this._newday = value;
 					this.SendPropertyChanged("newday");
 					this.OnnewdayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_image", DbType="NVarChar(4000)")]
+		public string image
+		{
+			get
+			{
+				return this._image;
+			}
+			set
+			{
+				if ((this._image != value))
+				{
+					this.OnimageChanging(value);
+					this.SendPropertyChanging();
+					this._image = value;
+					this.SendPropertyChanged("image");
+					this.OnimageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_chedotimkiem", DbType="Int")]
+		public System.Nullable<int> chedotimkiem
+		{
+			get
+			{
+				return this._chedotimkiem;
+			}
+			set
+			{
+				if ((this._chedotimkiem != value))
+				{
+					this.OnchedotimkiemChanging(value);
+					this.SendPropertyChanging();
+					this._chedotimkiem = value;
+					this.SendPropertyChanged("chedotimkiem");
+					this.OnchedotimkiemChanged();
 				}
 			}
 		}

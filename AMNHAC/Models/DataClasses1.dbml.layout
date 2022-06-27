@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 16.875, 8.5" name="DataClasses1">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 16.5, 8.5" name="DataClasses1">
   <DataContextMoniker Name="/DataClasses1DataContext" />
   <nestedChildShapes>
     <classShape Id="68ab2b37-8b2a-4020-b662-d957e93f3156" absoluteBounds="1.875, 2.375, 2, 1.7708968098958331">
@@ -76,7 +76,7 @@
         <elementListCompartment Id="861782a0-7dd6-4056-9aa0-f2a157efde2f" absoluteBounds="10.39, 6.0850000000000009, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(10.84375 : 5.625); (10.84375 : 1.81899251302083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(10.84375 : 5.625); (10.84375 : 1.81899251302083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataClasses1DataContext/AspNetRole/AspNetRole_AspNetUserRole" />
       <nodes>
         <classShapeMoniker Id="232c0cf8-0cdf-466e-871a-9d23726a5717" />
@@ -89,45 +89,45 @@
         <elementListCompartment Id="ed6c27d6-6c51-4891-abdb-1b6123e3615d" absoluteBounds="11.39, 2.335, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(11.375 : 3.06814697265625); (10.9270833333333 : 3.06814697265625 : JumpStart); (10.7604166666667 : 3.06814697265625 : JumpEnd); (8.5 : 3.06814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(11.375 : 3.06814697265625); (10.9270833333333 : 3.06814697265625 : JumpStart); (10.7604166666667 : 3.06814697265625 : JumpEnd); (8.5 : 3.06814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataClasses1DataContext/AspNetUser/AspNetUser_AspNetUserLogin" />
       <nodes>
         <classShapeMoniker Id="bfbadd91-2f9d-48be-8963-809ff58becb9" />
         <classShapeMoniker Id="d2cb8622-c26b-4c40-862e-f2c6ac0161dd" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(11.375 : 5.00080485026042); (10.9270833333333 : 5.00080485026042 : JumpStart); (10.7604166666667 : 5.00080485026042 : JumpEnd); (9.75 : 5.00080485026042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(11.375 : 5.00080485026042); (10.9270833333333 : 5.00080485026042 : JumpStart); (10.7604166666667 : 5.00080485026042 : JumpEnd); (9.75 : 5.00080485026042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataClasses1DataContext/AspNetUser/AspNetUser_AspNetUserClaim" />
       <nodes>
         <classShapeMoniker Id="bfbadd91-2f9d-48be-8963-809ff58becb9" />
         <classShapeMoniker Id="f6f49bfe-948b-4f8f-8958-9c7540cd7a5d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(11.375 : 4.19314697265625); (10.9270833333333 : 4.19314697265625 : JumpStart); (10.7604166666667 : 4.19314697265625 : JumpEnd); (7 : 4.19314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(11.375 : 4.19314697265625); (7 : 4.19314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataClasses1DataContext/AspNetUser/AspNetUser_Video" />
       <nodes>
         <classShapeMoniker Id="bfbadd91-2f9d-48be-8963-809ff58becb9" />
         <classShapeMoniker Id="1529d0ce-a870-4e18-ad67-97e15c97d0c1" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(12.5000005 : 1.875); (12.5000005 : 1.22199625651042); (11.625 : 1.22199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(12.5000005 : 1.875); (12.5000005 : 1.22199625651042); (11.625 : 1.22199625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataClasses1DataContext/AspNetUser/AspNetUser_AspNetUserRole" />
       <nodes>
         <classShapeMoniker Id="bfbadd91-2f9d-48be-8963-809ff58becb9" />
         <classShapeMoniker Id="6a531dcb-c330-4959-ab2c-38e1fa18b2b7" />
       </nodes>
     </associationConnector>
-    <classShape Id="50a73f9b-af12-49ad-8aa7-46f3292f8f37" absoluteBounds="14.625, 1.375, 2, 2.1554996744791666">
+    <classShape Id="3b502b1a-cddd-4fe2-b9f9-a5c9b4fb45e7" absoluteBounds="14.25, 2.25, 2, 2.5401025390625">
       <DataClassMoniker Name="/DataClasses1DataContext/BaiViet" />
       <nestedChildShapes>
-        <elementListCompartment Id="dd8b3c5a-2117-41aa-94e4-a6eddf824f28" absoluteBounds="14.64, 1.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="e4399d06-c205-4c45-9d48-138a1d041fc3" absoluteBounds="14.265, 2.71, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(13.375 : 2.70274983723958); (14.625 : 2.70274983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(13.375 : 3.52005126953125); (14.25 : 3.52005126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DataClasses1DataContext/AspNetUser/AspNetUser_BaiViet" />
       <nodes>
         <classShapeMoniker Id="bfbadd91-2f9d-48be-8963-809ff58becb9" />
-        <classShapeMoniker Id="50a73f9b-af12-49ad-8aa7-46f3292f8f37" />
+        <classShapeMoniker Id="3b502b1a-cddd-4fe2-b9f9-a5c9b4fb45e7" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

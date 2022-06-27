@@ -8,10 +8,14 @@
 
     <div class="search">
         <form action="/Home/Create" method="post">
-            <input type="search" name="Id" id="search" placeholder="Search Any Song.." title="Tìm kiếm" style="color: #000; max-width: 180px" />
-            <button type="submit" style="height:30px">
+            <button type="submit">
                 <span class="icon"><i class="fa fa-search"></i></span>
             </button>
+
+
+
+            <input type="search" name="Id" id="search" placeholder="Search Any Song.." title="Tìm kiếm" style="color:#000" />
+
         </form>
     </div>
 
@@ -20,16 +24,23 @@
             <input type="search"   id="search" placeholder="Search Any Song.." title="Tìm kiếm" style="color:#000" />
         </div>*@
     @*<div class="upload">
-        <buton class="upload_btn">
-            <i class="fa fa-upload" title="Up bài của bạn"> upload song </i>
-        </buton>
-    </div>*@
+            <buton class="upload_btn">
+                <i class="fa fa-upload" title="Up bài của bạn"> upload song </i>
+            </buton>
+        </div>*@
     <nav id="nav" active="">
         <a href="/Discover/Test" class="fa fa-upload" title="Up bài của bạn">Upload song</a>
         <a>/</a>
         <a href="/Discover/IndexDiscover" title="Bản cover"> Discover</a>
         <a href="/MyMusicProfile/Index" style="margin: 12px;" title="Trang Cá Nhân"> My music profile</a>
-        <a href="#" title="Xem Thêm"> More</a>
+
+        <select id="gender" onchange="genderChanged(this)" style="color:white; font-size: 21px; text-decoration: none; text-transform: uppercase; background-color:black;">
+            <option value="">--More--</option>
+            <option value="Dis">Discover</option>
+            <option value="VP">Piano Ảo</option>
+        </select>
+
+        @*<a href="#" title="Xem Thêm"> More</a>*@
     </nav>
 
     @*<ul class="account">
@@ -45,5 +56,18 @@
 <div class="clear"></div>
 
 
-<style>
-</style>
+
+<script>
+    function genderChanged(obj) {
+        var value = obj.value;
+        if (value === '') {
+            window.location.replace("https://localhost:44399/Home/Index");
+        }
+        else if (value === 'Dis') {
+            window.location.replace("https://localhost:44399/Discover/IndexDiscover");
+        }
+        else if (value === 'VP') {
+            window.location.replace("https://localhost:44399/Home/Piano");
+        }
+    }
+</script>

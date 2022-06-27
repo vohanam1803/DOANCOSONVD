@@ -17,7 +17,7 @@ namespace AMNHAC.Controllers
     [Authorize]
     public class MyMusicProfileController : Controller
     {
-
+        
         DataClasses1DataContext data = new DataClasses1DataContext();
 
         private ApplicationUserManager _userManager;
@@ -82,13 +82,12 @@ namespace AMNHAC.Controllers
             {
                 var userId = User.Identity.GetUserId();
                 var checkuser = from ss in data.AspNetUsers where ss.Id == userId select ss;
-                var baiviet = from ss in data.BaiViets where ss.UserId == userId select ss;
+
                 var videoProfile = data.Videos.FirstOrDefault(m => m.UserId == userId);
                 var check = /*from ss in data.Videos where ss.loaivideo == "user" && ss.UserId == userId select ss*/getget;
                 dynamic mymodel = new ExpandoObject();
                 mymodel.user = checkuser;
                 mymodel.video = check;
-                mymodel.baiviet = baiviet;
                 if (videoProfile == null)
                 {
                     ViewBag.Message = "You Not Have Anything In Playlist";
@@ -128,18 +127,16 @@ namespace AMNHAC.Controllers
                     }
                 }
                 data.SubmitChanges();*/
-
+                
                 ///
 
+                var checkuser = from ss in data.AspNetUsers where ss.Id == userId  select ss; 
 
-                var checkuser = from ss in data.AspNetUsers where ss.Id == userId select ss;
-                var baiviet = from ss in data.BaiViets where ss.UserId == userId select ss;
                 var videoProfile = data.Videos.FirstOrDefault(m => m.UserId == userId);
                 var check = /*from ss in data.Videos where ss.loaivideo == "user" && ss.UserId == userId select ss*/getget;
                 dynamic mymodel = new ExpandoObject();
                 mymodel.user = checkuser;
                 mymodel.video = check;
-                mymodel.baiviet = baiviet;
                 if (videoProfile == null)
                 {
                     ViewBag.Message = "You Not Have Anything In Playlist";
@@ -305,12 +302,5 @@ namespace AMNHAC.Controllers
             string get = video.Uri;
             return get;
         }
-
-   /*     public ActionResult GetNews()
-        {
-            var userId = User.Identity.GetUserId();
-
-            return View(news);
-        }*/
     }
 }

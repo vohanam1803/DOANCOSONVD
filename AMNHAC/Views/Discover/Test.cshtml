@@ -16,7 +16,7 @@
             </dt>
 
             <dd>
-                <input type="text" id="test" name="title"/>
+                <input type="text" id="test" name="title" />
             </dd>
 
             <dt style="color:white">
@@ -27,11 +27,11 @@
                 @*<input type="text" id="test2" name="mota" />*@
                 <textarea type="text" id="test2" name="mota" style="width:200px; height: 200px"></textarea>
             </dd>
-            
-            
+
+
 
             <dt style="color:white">
-                Video
+                Video(Nếu Có)
             </dt>
 
             <dd>
@@ -41,7 +41,18 @@
                     <input type="text" id="hinh" name="hinh" value="" />
                 </div>
             </dd>
-            
+
+            <dt style="color:white">
+                Ảnh(Nếu Có)
+            </dt>
+            <dd>
+                <div style="color:black">
+                    <input type="file" name="fileUpload1" id="fileUpload1" style="color:white;display:none;" accept="image/*" />
+                    <input type="button" id="btnUpload1" value="Chọn" class="btn btn-success" />
+                    <input type="text" id="hinh1" name="hinh1" value="" />
+                    <img style="margin-top: 10px; width: 200px; height: 200px;" src="" id="pictureUpload1" />
+                </div>
+            </dd>
 
             <dt style="color:white">
                 Chế Độ
@@ -58,7 +69,75 @@
     </div>
 
 
-    <button type="submit" style="color:black;">Save</button>
+    <button class="button-86" type="submit" style="color:white;">Save</button>
+    <style>
+        .button-86 {
+            all: unset;
+            width: 100px;
+            height: 30px;
+            font-size: 16px;
+            background: transparent;
+            border: none;
+            position: relative;
+            color: #f0f0f0;
+            cursor: pointer;
+            z-index: 1;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-86::after,
+        .button-86::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            z-index: -99999;
+            transition: all .4s;
+        }
+
+        .button-86::before {
+            transform: translate(0%, 0%);
+            width: 100%;
+            height: 100%;
+            background: #28282d;
+            border-radius: 10px;
+        }
+
+        .button-86::after {
+            transform: translate(10px, 10px);
+            width: 35px;
+            height: 35px;
+            background: #ffffff15;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-radius: 50px;
+        }
+
+        .button-86:hover::before {
+            transform: translate(5%, 20%);
+            width: 110%;
+            height: 110%;
+        }
+
+        .button-86:hover::after {
+            border-radius: 10px;
+            transform: translate(0, 0);
+            width: 100%;
+            height: 100%;
+        }
+
+        .button-86:active::after {
+            transition: 0s;
+            transform: translate(0, 5%);
+        }
+    </style>
 </form>
 
 
@@ -109,5 +188,37 @@
                     });
             }
         });
+
+        $(function () {
+            $('#btnUpload1').click(function () {
+                $('#fileUpload1').trigger('click');
+            });
+        });
+        $('#fileUpload1').change(function () {
+            if (window.FormData !== undefined) {
+                var fileUpload = $('#fileUpload1').get(0);
+                var files = fileUpload.files;
+                var formData = new FormData();
+                formData.append('file', files[0]);
+
+                $.ajax(
+                    {
+                        type: 'POST',
+                        url: '/Home/ProcessUpload',
+                        contentType: false,
+                        processData: false,
+                        data: formData,
+                        success: function (urlImage) {
+
+                            $('#pictureUpload1').attr('src', urlImage);
+                            $('#hinh1').attr('value', urlImage);
+                        },
+                        error: function (err) {
+                            alert('Error ', err.statusText);
+                        }
+                    });
+            }
+        });
     </script>
 }
+

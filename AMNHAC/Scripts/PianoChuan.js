@@ -47,6 +47,30 @@ const Gb4 = new Audio("/Content/music/b52.mp3");
 const Ab4 = new Audio("/Content/music/b53.mp3");
 const Bb4 = new Audio("/Content/music/b54.mp3");
 
+const Db5 = new Audio("/Content/music/b56.mp3");
+const Eb5 = new Audio("/Content/music/b57.mp3");
+const Gb5 = new Audio("/Content/music/b81.mp3");
+const Ab5 = new Audio("/Content/music/b87.mp3");
+const Bb5 = new Audio("/Content/music/b69.mp3");
+
+const Db6 = new Audio("/Content/music/b84.mp3");
+const Eb6 = new Audio("/Content/music/b89.mp3");
+const Gb6 = new Audio("/Content/music/b73.mp3");
+const Ab6 = new Audio("/Content/music/b79.mp3");
+const Bb6 = new Audio("/Content/music/b80.mp3");
+
+const Db7 = new Audio("/Content/music/b83.mp3");
+const Eb7 = new Audio("/Content/music/b68.mp3");
+const Gb7 = new Audio("/Content/music/b71.mp3");
+const Ab7 = new Audio("/Content/music/b72.mp3");
+const Bb7 = new Audio("/Content/music/b74.mp3");
+
+const Db8 = new Audio("/Content/music/b76.mp3");
+const Eb8 = new Audio("/Content/music/b90.mp3");
+const Gb8 = new Audio("/Content/music/b67.mp3");
+const Ab8 = new Audio("/Content/music/b86.mp3");
+const Bb8 = new Audio("/Content/music/b66.mp3");
+
 const playSound = audio => {
     const clone = audio.cloneNode();
     clone.play();
@@ -56,6 +80,173 @@ const playSound = audio => {
     setTimeout(() => (clone.volume = 0.2), 1600);
     setTimeout(() => (clone.volume = 0), 2000);
 };
+///Node #,b
+//Tone4
+//Db4
+const Db4Key = document.getElementById("Db4");
+const playDb4 = () => {
+    playSound(Db4)
+};
+Db4Key.addEventListener("click", playDb4);
+//Eb4
+const Eb4Key = document.getElementById("Eb4");
+const playEb4 = () => {
+    playSound(Eb4)
+};
+Eb4Key.addEventListener("click", playEb4);
+//Gb4
+const Gb4Key = document.getElementById("Gb4");
+const playGb4 = () => {
+    playSound(Gb4)
+};
+Gb4Key.addEventListener("click", playGb4);
+//Ab4
+const Ab4Key = document.getElementById("Ab4");
+const playAb4 = () => {
+    playSound(Ab4)
+};
+Ab4Key.addEventListener("click", playAb4);
+//Bb4
+const Bb4Key = document.getElementById("Bb4");
+const playBb4 = () => {
+    playSound(Bb4)
+};
+Bb4Key.addEventListener("click", playBb4);
+
+//Tone5
+//Db5
+const Db5Key = document.getElementById("Db5");
+const playDb5 = () => {
+    playSound(Db5)
+};
+Db5Key.addEventListener("click", playDb5);
+//Eb5
+const Eb5Key = document.getElementById("Eb5");
+const playEb5 = () => {
+    playSound(Eb5)
+};
+Eb5Key.addEventListener("click", playEb5);
+//Gb5
+const Gb5Key = document.getElementById("Gb5");
+const playGb5 = () => {
+    playSound(Gb5)
+};
+Gb5Key.addEventListener("click", playGb5);
+//Ab5
+const Ab5Key = document.getElementById("Ab5");
+const playAb5 = () => {
+    playSound(Ab5)
+};
+Ab5Key.addEventListener("click", playAb5);
+//Bb5
+const Bb5Key = document.getElementById("Bb5");
+const playBb5 = () => {
+    playSound(Bb5)
+};
+Bb5Key.addEventListener("click", playBb5);
+
+//Tone6
+//Db6
+const Db6Key = document.getElementById("Db6");
+const playDb6 = () => {
+    playSound(Db6)
+};
+Db6Key.addEventListener("click", playDb6);
+//Eb6
+const Eb6Key = document.getElementById("Eb6");
+const playEb6 = () => {
+    playSound(Eb6)
+};
+Eb6Key.addEventListener("click", playEb6);
+//Gb6
+const Gb6Key = document.getElementById("Gb6");
+const playGb6 = () => {
+    playSound(Gb6)
+};
+Gb6Key.addEventListener("click", playGb6);
+//Ab6
+const Ab6Key = document.getElementById("Ab6");
+const playAb6 = () => {
+    playSound(Ab6)
+};
+Ab6Key.addEventListener("click", playAb6);
+//Bb6
+const Bb6Key = document.getElementById("Bb6");
+const playBb6 = () => {
+    playSound(Bb6)
+};
+Bb6Key.addEventListener("click", playBb6);
+
+//Tone7
+//Db7
+const Db7Key = document.getElementById("Db7");
+const playDb7 = () => {
+    playSound(Db7)
+};
+Db7Key.addEventListener("click", playDb7);
+//Eb7
+const Eb7Key = document.getElementById("Eb7");
+const playEb7 = () => {
+    playSound(Eb7)
+};
+Eb7Key.addEventListener("click", playEb7);
+//Gb7
+const Gb7Key = document.getElementById("Gb7");
+const playGb7 = () => {
+    playSound(Gb7)
+};
+Gb7Key.addEventListener("click", playGb7);
+//Ab7
+const Ab7Key = document.getElementById("Ab7");
+const playAb7 = () => {
+    playSound(Ab7)
+};
+Ab7Key.addEventListener("click", playAb7);
+//Bb7
+const Bb7Key = document.getElementById("Bb7");
+const playBb7 = () => {
+    playSound(Bb7)
+};
+Bb7Key.addEventListener("click", playBb7);
+
+//Tone8
+//Db8
+const Db8Key = document.getElementById("Db8");
+const playDb8 = () => {
+    playSound(Db8)
+};
+Db8Key.addEventListener("click", playDb8);
+//Eb8
+const Eb8Key = document.getElementById("Eb8");
+const playEb8 = () => {
+    playSound(Eb8)
+};
+Eb8Key.addEventListener("click", playEb8);
+//Gb8
+const Gb8Key = document.getElementById("Gb8");
+const playGb8 = () => {
+    playSound(Gb8)
+};
+Gb8Key.addEventListener("click", playGb8);
+//Ab8
+const Ab8Key = document.getElementById("Ab8");
+const playAb8 = () => {
+    playSound(Ab8)
+};
+Ab8Key.addEventListener("click", playAb8);
+//Bb8
+const Bb8Key = document.getElementById("Bb8");
+const playBb8 = () => {
+    playSound(Bb8)
+};
+Bb8Key.addEventListener("click", playBb8);
+
+
+
+
+
+
+////Node normal
 //Tone 4
 //C4
 var C4Key = document.getElementById("C4");
@@ -346,5 +537,6 @@ window.addEventListener("keydown", ({ keyCode }) => {
     if (keyCode == 118) return playB8();
 
     if (keyCode == 119) return playC9();
+
 
 })

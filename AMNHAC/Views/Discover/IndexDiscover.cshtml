@@ -11,21 +11,61 @@
     <div class="menu-left">
         @foreach (AspNetUser user in Model.user)
         {
+
             <div class="status_header">
                 <div class="status_avatar pd-8">
                     <img src="@user.Avatar" alt="">
                 </div>
                 <div class="status_hMid pd-8">
-                    <div class="status_name">@user.Name</div>
+                    <div class="status_name">
+                        <nav id="nav" active="">
+                            <a href="/MyMusicProfile/Index" style="margin: 12px;" title="Trang Cá Nhân">@user.Name</a>
+                        </nav>
+                    </div>
                 </div>
             </div>
+
         }
+        <div class="status_header" style="margin-top:5%;">
+            <div class="status_hMid pd-8">
+                <nav id="nav" active="">
+
+                    <a href="/MyMusicProfile/Index" style="margin: 12px;" title="Trang Cá Nhân"> My music profile</a>
+                </nav>
+            </div>
+        </div>
+        <div class="status_header" style="margin-top:10%;">
+            <div class="status_hMid pd-8">
+                <nav id="nav" active="">
+                    <a href="/Discover/Test" class="fa fa-upload" title="Up bài của bạn">Upload song</a>
+
+                </nav>
+            </div>
+        </div>
+        <div class="status_header" style="margin-top:15%;">
+            <div class="status_hMid pd-8">
+                <nav id="nav" active="">
+                    <form action="/Discover/SearchBaiViet" method="post">
+                        <button type="submit">
+                            <span class="icon"><i class="fa fa-search"></i></span>
+                        </button>
+
+
+
+                        <input type="search" name="Id" id="search" placeholder="Search Any Post.." title="Tìm kiếm" style="color:#000" />
+
+                    </form>
+
+                </nav>
+            </div>
+        </div>
     </div>
 
 
 
 
     <div class="status">
+        
         @foreach (BaiViet item in Model.baiviet)
         {
             <div class="status-main mt-16">
@@ -46,6 +86,18 @@
                             {
                                 <i class="fa fa-globe" aria-hidden="true">Cá Nhân</i>
                             }
+                            @using Microsoft.AspNet.Identity
+                            @if (Request.IsAuthenticated)
+                            {
+                                if (User.Identity.GetUserName() == "xincaiten2001@gmail.com")
+                                {
+                                    <form action="/Discover/DeleteBaiViet" method="post">
+                                        <input type="text" id="domain" name="Id" value="@item.idPost" style="display:none;" />
+                                        <button type="submit" style="color:black;">Delete</button>
+                                    </form>
+                                }
+
+                            }
                         </div>
                     </div>
                 </div>
@@ -55,6 +107,16 @@
                 <div class="caption">
                     @item.Mota
                 </div>
+                @if (item.image == "")
+                {
+
+                }
+                else
+                {
+                    <div class="status_img text-center mt-8">
+                        <img src="@item.image" alt="">
+                    </div>
+                }
                 @if (item.video == "")
                 {
 

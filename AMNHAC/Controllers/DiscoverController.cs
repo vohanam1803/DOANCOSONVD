@@ -17,7 +17,7 @@ namespace AMNHAC.Controllers
     public class DiscoverController : Controller
     {
         // GET: Discover
-        
+
         DataClasses1DataContext data = new DataClasses1DataContext();
         private ApplicationUserManager _userManager;
         public ApplicationUserManager UserManager
@@ -32,7 +32,7 @@ namespace AMNHAC.Controllers
             }
         }
 
-        
+
 
 
         [HttpPost]
@@ -48,13 +48,15 @@ namespace AMNHAC.Controllers
         [Authorize]
         public ActionResult IndexDiscover()
         {
-            
+
             dynamic mymodel = new ExpandoObject();
             var userId = User.Identity.GetUserId();
             var user = from ss in data.AspNetUsers where ss.Id == userId select ss;
-            var baiviet = from ss in data.BaiViets select ss;
+            var baiviet = from ss in data.BaiViets where ss.chedo == "CK" orderby ss.newday descending select ss;
             mymodel.user = user;
             mymodel.baiviet = baiviet;
+
+
             /*var getget = get();*/
 
             /* var all_playlist = data.Videos.ToList();*/
@@ -77,10 +79,10 @@ namespace AMNHAC.Controllers
         [HttpGet]
         public JsonResult listVD()
         {
-            
+
             var userId = User.Identity.GetUserId();
-            
-            
+
+
             try
             {
                 var dsdata = (from ss in data.Videos where ss.UserId == userId && ss.loaivideo == "user" select new { Id = ss.id, title = ss.title, author = ss.author, file = ss.NguonVideo, image = ss.HinhNguonVideo }).ToArray();
@@ -115,6 +117,7 @@ namespace AMNHAC.Controllers
             var getmota = fr["mota"];
             var getvideo = fr["hinh"];
             var getchedo = fr["chedo"];
+            var gethinh = fr["hinh1"];
 
 
             var check = new BaiViet();
@@ -124,12 +127,13 @@ namespace AMNHAC.Controllers
             check.chedo = getchedo;
             check.UserId = userId;
             check.newday = DateTime.Now;
-            if(check.Mota == "")
+            check.image = gethinh;
+            if (check.Mota == "")
             {
                 ViewBag.Message = "Mô Tả Is Not Null!!";
                 return View("~/Views/Discover/Test.cshtml");
             }
-            if(check.chedo == "")
+            if (check.chedo == "")
             {
                 ViewBag.Message = "Check Your Chế Độ!!";
                 return View("~/Views/Discover/Test.cshtml");
@@ -230,5 +234,52 @@ namespace AMNHAC.Controllers
         }
 
 
+        [HttpPost]
+        public ActionResult DeleteBaiViet(FormCollection collection)
+        {
+            var IdPost = int.Parse(collection["Id"]);
+            var D_playlist = data.BaiViets.Where(m => m.idPost == IdPost).First();
+            data.BaiViets.DeleteOnSubmit(D_playlist);
+            data.SubmitChanges();
+
+            dynamic mymodel = new ExpandoObject();
+            var userId = User.Identity.GetUserId();
+            var user = from ss in data.AspNetUsers where ss.Id == userId select ss;
+            var baiviet = from ss in data.BaiViets where ss.chedo == "CK" orderby ss.newday descending select ss;
+            mymodel.user = user;
+            mymodel.baiviet = baiviet;
+            return View("~/Views/Discover/IndexDiscover.cshtml", mymodel);
+        }
+
+        [HttpPost]
+        public ActionResult SearchBaiViet(FormCollection collection)
+        {
+            string timkiem = collection["Id"];
+            if(timkiem == null || timkiem =="")
+            {
+                return RedirectToAction("IndexDiscover");
+            }
+            var D_playlist = data.BaiViets.ToList();
+            
+            /*var list = new List<Video>(D_playlist.Count);*/
+            for (var item = 0; item < D_playlist.Count; item++)
+            {
+                if (D_playlist[item].title.Contains(timkiem))
+                {
+                    D_playlist[item].chedotimkiem = 1;
+                  
+                }
+            }
+            /* var list = from ss in D_playlist where ss.Mota == "1" && ss.chedo == "CK" orderby ss.newday descending select ss;*/
+
+            dynamic mymodel = new ExpandoObject();
+            var userId = User.Identity.GetUserId();
+            var user = from ss in data.AspNetUsers where ss.Id == userId select ss;
+            var baiviet = from ss in D_playlist where ss.chedotimkiem == 1 && ss.chedo == "CK" orderby ss.newday descending select ss;
+            mymodel.user = user;
+            mymodel.baiviet = baiviet;
+            return View("~/Views/Discover/IndexDiscover.cshtml", mymodel);
+
+        }
     }
 }

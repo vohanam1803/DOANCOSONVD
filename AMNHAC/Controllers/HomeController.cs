@@ -254,11 +254,12 @@ namespace AMNHAC.Controllers
             return View(mymodel);
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public ActionResult Create()
         {
-            return View("~/Views/Home/Index.cshtml");
-        }
+            
+            return View();
+        }*/
 
 
         [HttpPost]
@@ -270,6 +271,14 @@ namespace AMNHAC.Controllers
             //Youtube API
             test = await searchObject.RunYouTube(vk.title);
 
+            dynamic mymodel = new ExpandoObject();
+            mymodel.personTQ = from ss in data.Persons where ss.idTheloai == 1 select ss;
+            mymodel.personVN = from ss in data.Persons where ss.idTheloai == 2 select ss;
+
+            mymodel.videoTQ = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 1 select ss;
+
+            mymodel.videoVN = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 2 select ss;
+            
             if (vk.title != "")
             {
                 if (test.Count == 0)
@@ -286,13 +295,7 @@ namespace AMNHAC.Controllers
             }
             else
             {
-                dynamic mymodel = new ExpandoObject();
-                mymodel.person = GetPerson();
-
-
-                mymodel.videoTQ = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 1 select ss;
-
-                mymodel.videoVN = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 2 select ss;
+               
                 return View("~/Views/Home/Index.cshtml", mymodel);
             }
 
@@ -1070,7 +1073,8 @@ namespace AMNHAC.Controllers
             var list = from ss in D_playlist where ss.vitrivideo == "1" && ss.loaivideo != "user" select ss;
             ViewBag.Message = "Your Search In PlayList!!";
             dynamic mymodel = new ExpandoObject();
-            mymodel.person = GetPerson();
+            mymodel.personTQ = from ss in data.Persons where ss.idTheloai == 1 select ss;
+            mymodel.personVN = from ss in data.Persons where ss.idTheloai == 2 select ss;
 
             mymodel.trangchu = list;
             mymodel.videoTQ = from ss in data.Videos where ss.loaivideo != "user" && ss.idTheloai == 1 select ss;
@@ -1259,6 +1263,11 @@ namespace AMNHAC.Controllers
             }
             file.SaveAs(Server.MapPath("~/Content/images/" + file.FileName));
             return "/Content/images/" + file.FileName;
+        }
+
+        public ActionResult Piano()
+        {
+            return View();
         }
     }
 }
