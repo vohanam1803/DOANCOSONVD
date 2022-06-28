@@ -61,6 +61,24 @@ namespace AMNHAC.Controllers
         public ActionResult Delete(string id)
         {
 
+            var deleteUserVideo = (data.Videos.Where(n => n.UserId == id)).ToList();
+            for (var item = 0; item < deleteUserVideo.Count; item++)
+            {
+                if (deleteUserVideo[item].UserId == id)
+                {
+                    data.Videos.DeleteOnSubmit(deleteUserVideo[item]);
+                }
+            }
+            var deleteUserPost = (data.BaiViets.Where(n => n.UserId == id)).ToList();
+            for (var item = 0; item < deleteUserPost.Count; item++)
+            {
+                if (deleteUserPost[item].UserId == id)
+                {
+                    data.BaiViets.DeleteOnSubmit(deleteUserPost[item]);
+                }
+            }
+
+
 
             var all_user = data.AspNetUsers.SingleOrDefault(n => n.Id == id); ;
             data.AspNetUsers.DeleteOnSubmit(all_user);
